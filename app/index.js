@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { ProfilUser,NavbarTop } from '../components';
+import { Categories, ProfilUser,NavbarTop,} from '../components';
 export default function App() {
   return (
     <View style={styles.container}>
       <NavbarTop/>
+      <Categories/>
       <ProfilUser/>
     </View>
   );
