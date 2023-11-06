@@ -1,5 +1,6 @@
-import ProfilUser from './ProfilUser'
+import ProfilUser from './ProfilUser';
 import NavbarTop from './NavbarTop';
+import Categories from './Categories';
 export{
-    ProfilUser,NavbarTop
+    ProfilUser,NavbarTop,Categories
 };
