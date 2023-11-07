@@ -26,7 +26,7 @@ const Categories = () => {
     return (
         <View marginTop={150}>
             <View>
-              <Text style={{fontWeight: 'bold', fontSize: 20, padding: 10}}> Kategori</Text>
+              <Text style={{fontWeight: 'bold', fontSize: 19, padding: 10}}> Kategori</Text>
             <FlatList 
             data={kategori}
             horizontal
