@@ -1,7 +1,6 @@
-import ProfilUser from './ProfilUser'
+import ProfilUser from './ProfilUser';
 import NavbarTop from './NavbarTop';
-import Separator from './Separator';
-import NavbarBottom from './NavbarBottom';
+import Categories from './Categories' ;
 export{
-    ProfilUser,NavbarTop,Separator,NavbarBottom
+    ProfilUser,NavbarTop
 };

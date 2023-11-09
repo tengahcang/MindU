@@ -9,6 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@gluestack-style/legend-motion-animation-driver": "^1.0.2",
+    "@gluestack-style/react": "^1.0.12",
+    "@gluestack-ui/config": "^1.0.3",
+    "@gluestack-ui/themed": "^1.0.11",
+    "@react-native-aria/focus": "^0.2.9",
+    "@react-native-aria/interactions": "^0.2.11",
+    "@react-native-aria/overlays": "^0.3.10",
     "expo": "~49.0.15",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",
