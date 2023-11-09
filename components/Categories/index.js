@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text } from "@gluestack-ui/themed"
-import { styled } from "@gluestack-style/react"
-import {FlatList, TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View, Text, FlatList} from 'react-native';
+// import { FlatList } from "native-base";
 
 
-const Categories = () => {
+
+const Kategori = () => {
     const [kategori, setKategori] = useState(
         [
             {
@@ -21,12 +21,12 @@ const Categories = () => {
 
     const [kategoriSeleksi, setKategoriSeleksi] = useState({
         nama: 'Kuliah',
-    })
+    });
 
     return (
-        <View marginTop={150}>
+        <View style={{flex: 1}}>
             <View>
-              <Text style={{fontWeight: 'bold', fontSize: 19, padding: 10}}> Kategori</Text>
+              <Text style={{fontWeight: 'bold', fontSize: 20, padding: 10}}> Kategori</Text>
             <FlatList 
             data={kategori}
             horizontal
@@ -42,9 +42,8 @@ const Categories = () => {
     borderRadius: 15,
     marginLeft: 10,
     width: 100,
-    height: 35,
               }}>
-                    <Text color={'white'} fontWeight={'bold'}>{item.nama}</Text>
+                    <Text style= {{color:'white', fontWeight:'bold'}}>{item.nama}</Text>
                 </TouchableOpacity>
             )}
             />
@@ -52,7 +51,7 @@ const Categories = () => {
         </View>
     );
 };
-export default Categories;
+export default Kategori;
 
 // const menu = {
 //     marginRight: 10, 
