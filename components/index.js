@@ -7,5 +7,5 @@ import Separator from './Separator'
 import PrimaryButton from './primaryButton';
 import Calender from './Calender';
 export{
-    ProfilUser,NavbarTop,Input,Task,Separator,PrimaryButton,Calender
+    ProfilUser,NavbarTop,Input,Task,Separator
 };

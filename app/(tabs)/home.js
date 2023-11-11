@@ -4,7 +4,7 @@ import { NavbarTop,Task,Separator } from '../../components'
 import { ScrollView } from 'native-base';
 const Home = () => {
   return (
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1, backgroundColor:'white',}}>
       <StatusBar backgroundColor="white" barStyle="dark-content"/>
       <View style={{flex:1,backgroundColor:'white', marginTop:25}}>
         <NavbarTop/>
