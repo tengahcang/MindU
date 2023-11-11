@@ -1,0 +1,12 @@
+import * as React from 'react';
+import Svg, { Path } from 'react-native-svg';
+
+function Categories({width,height,color}){
+  return(
+    <Svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 39 38" fill="none">
+      <Path d="M16.0344 31.2143H38.75V33.9286H16.0344V31.2143ZM4.95239 32.5714L0.766226 36.0729L3.05401 38L9.54419 32.5714L3.05401 27.1429L0.75 29.0564L4.95239 32.5714ZM16.0344 17.6429H38.75V20.3571H16.0344V17.6429ZM4.95239 19L0.766226 22.5014L3.05401 24.4286L9.54419 19L3.05401 13.5714L0.75 15.485L4.95239 19ZM16.0344 4.07143H38.75V6.78571H16.0344V4.07143ZM4.95239 5.42857L0.766226 8.93L3.05401 10.8571L9.54419 5.42857L3.05401 0L0.75 1.91357L4.95239 5.42857Z" fill={color}/>
+    </Svg>
+
+  );
+}
+export default Categories
