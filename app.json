@@ -1,20 +1,12 @@
 {
   "expo": {
-<<<<<<< HEAD
     "name": "MindU",
     "slug": "MindU",
-=======
-    "name": "komponen",
-    "slug": "komponen",
->>>>>>> 9c86cac (Initial commit)
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-<<<<<<< HEAD
     "scheme": "my-scheme",
-=======
->>>>>>> 9c86cac (Initial commit)
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -34,13 +26,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-<<<<<<< HEAD
     },
     "plugins": [
       "expo-router"
     ]
-=======
-    }
->>>>>>> 9c86cac (Initial commit)
   }
 }
