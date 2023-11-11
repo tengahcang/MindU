@@ -4,7 +4,7 @@ import {TouchableOpacity, View, Text, FlatList} from 'react-native';
 
 
 
-const Kategori = () => {
+const Categories = () => {
     const [kategori, setKategori] = useState(
         [
             {
@@ -26,22 +26,22 @@ const Kategori = () => {
     return (
         <View style={{flex: 1}}>
             <View>
-              <Text style={{fontWeight: 'bold', fontSize: 20, padding: 10}}> Kategori</Text>
+              <Text style={{fontWeight: 'bold', fontSize: 20, padding: 10, marginLeft: 10}}> Kategori</Text>
             <FlatList 
             data={kategori}
             horizontal
             renderItem={({item}) => (
               <TouchableOpacity 
               style={{
-                marginRight: 10, 
+                marginRight: 7, 
     backgroundColor: kategoriSeleksi.nama == item.nama ? '#2196F3' : '#A4A4A4', 
     elevation: 3,
-    paddingHorizontal: 20, 
+    alignItems: 'center', 
     paddingVertical: 8,
     marginBottom: 10,
     borderRadius: 15,
-    marginLeft: 10,
-    width: 100,
+    marginLeft: 20,
+    width: 95,
               }}>
                     <Text style= {{color:'white', fontWeight:'bold'}}>{item.nama}</Text>
                 </TouchableOpacity>
@@ -51,7 +51,7 @@ const Kategori = () => {
         </View>
     );
 };
-export default Kategori;
+export default Categories;
 
 // const menu = {
 //     marginRight: 10, 
