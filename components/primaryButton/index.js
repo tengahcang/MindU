@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 4,
     textAlign: 'center',
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Poppins',
     fontSize: 20,
     color: 'white',
+    fontWeight:'700'
   },
 });

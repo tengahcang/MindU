@@ -1,6 +1,6 @@
 import { View, Text, StatusBar, SafeAreaView } from 'react-native'
 import React from 'react'
-import { NavbarTop } from '../../components'
+import { NavbarTop,Calender,Separator } from '../../components'
 
 const kalender = () => {
   return (
@@ -9,8 +9,9 @@ const kalender = () => {
       <View style={{flex:1,backgroundColor:'white', marginTop:25}}>
         <NavbarTop/> 
       </View>
+      <Separator height={120}/>
       <View>
-        {/* <Calender/> */}
+        <Calender/>
       </View>
     </SafeAreaView>
   )

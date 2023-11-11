@@ -1,7 +1,7 @@
 import { View, Text, StatusBar, SafeAreaView } from 'react-native'
 import React from 'react'
-import { NavbarTop,ProfilUser } from '../../components'
-
+import { NavbarTop,ProfilUser,Separator, PrimaryButton} from '../../components'
+import { Heading,Center } from "native-base";
 const Setting = () => {
   return (
     <SafeAreaView style={{flex:1}}>
@@ -10,8 +10,14 @@ const Setting = () => {
         <NavbarTop/> 
       </View>
       <View>
-        <Text>Profil Saya</Text>
+        <Heading>Profil Saya</Heading>
+        <Separator height={24}/>
         <ProfilUser/>
+      </View>
+      <Separator height={350}/>
+      <View style={{padding:20}}>
+        <PrimaryButton title="Keluar"/>
+        <Center>App Version 1.0</Center>
       </View>
     </SafeAreaView>
   )
