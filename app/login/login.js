@@ -1,100 +1,68 @@
-import React, { useState } from 'react';
-import {
-  Image, StyleSheet, Text, TouchableOpacity, View,
-} from 'react-native';
+import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, FlatList, ImageBackground} from 'react-native'
+import { useNavigation } from "@react-navigation/native";
+import React,{useCallback, useState,} from 'react'
+import { NavbarTop,Task,Separator } from '../../components'
+import { useFonts } from 'expo-font';
+import { NativeBaseProvider } from 'native-base';
+import * as SplashScreen from 'expo-splash-screen';
+import halamanlogin from '../../assets/halamanlogin.png';
+import GoogleIcon from '../../assets/svgs/GoogleIcon';
 
-function Login() {
-  const [isSelected, setIsSelected] = useState(false);
+const poppinsMedium = require('../../assets/fonts/Poppins-Medium.ttf');
+const poppinsSemiBold = require('../../assets/fonts/Poppins-SemiBold.ttf');
+const poppinsBold = require('../../assets/fonts/Poppins-Bold.ttf');
 
+SplashScreen.preventAutoHideAsync();
+
+const Login = () => {
+  
+  const [fontsLoaded] = useFonts({
+    'Poppins-Medium': poppinsMedium,
+    'Poppins-SemiBold': poppinsSemiBold,
+    'Poppins-Bold': poppinsBold,
+  });
+  
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <View>
-      <View style={styles.item}>
-        <View style={styles.itemLeft}>
-          <View style={styles.circle}>
-            <Image src={require('../../assets/login.png')} style={styles.photo} />
-          </View>
-          <View style={styles.textContainer}>
-            {/* <Text style={styles.name}>{name}</Text> */}
-            <Text style={styles.name}>Rochmat Wahyu Prayogi</Text>
-            {/* <Text style={styles.email}>{email}</Text> */}
-            <Text style={styles.email}>rochmatwahy@gmail.com</Text>
-          </View>
-        </View>
-        <View style={styles.radioContainer}>
-          {/* <TouchableOpacity onPress={() => setIsSelected(!isSelected)}>
-            <View style={styles.radioOuterCircle}>
-              {isSelected && (<View style={styles.radioInnerCircle} />)}
-            </View>
-          </TouchableOpacity> */}
-        </View>
-      </View>
+    <View style={{flex:1}}>
+      <ImageBackground source={halamanlogin} style={{flex:1, justifyContent:'center'}}>
+      <Separator height={60}/>
+      <Text style={{fontWeight: 'bold', fontSize: 35, color:'#2196F3', textAlign: 'center', top:50}}>
+      Selamat Datang</Text>
+      <Text style={{fontWeight: 'bold', fontSize: 15, textAlign: 'center', padding: 20, top:40}}>Selamat datang di MIND U. Bersiaplah
+      untuk memulai perjalanan Anda menuju hal-hal yang terstruktur!
+      </Text>
+      <Separator height={40}/>
+      <TouchableOpacity style={{
+                marginRight: 7, 
+    backgroundColor: 'white', 
+    elevation: 6,
+    borderColor:'#2196F3',
+    borderWidth: 2,
+    alignItems: 'center',
+    paddingVertical: 8,
+    marginBottom: 10,
+    borderRadius: 30,
+    marginLeft: 40,
+    height: 60,
+    width: 300,
+              }}>
+                <Text style= {{fontWeight:'bold', color:'#2196F3', marginRight:30, marginTop:10}}>Masuk dengan Google</Text>
+                <GoogleIcon style={{marginLeft:180, bottom: 27}}>
+          </GoogleIcon>
+      </TouchableOpacity>
+      </ImageBackground>
+      
     </View>
-  );
+    );
 }
-
-const styles = StyleSheet.create({
-  item: {
-    backgroundColor: '#2196F3',
-    height: 74,
-    borderRadius: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth: 2,
-    borderColor: '#E0E0E0',
-  },
-  radioOuterCircle: {
-    height: 28,
-    width: 28,
-    borderRadius: 14,
-    borderWidth: 2,
-    borderColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  radioInnerCircle: {
-    height: 14,
-    width: 14,
-    borderRadius: 7,
-    backgroundColor: 'white',
-  },
-  itemLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-  },
-  circle: {
-    marginRight: 15,
-    marginTop: 0,
-    marginLeft: 18,
-  },
-  textContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  radioContainer: {
-    marginRight: 20,
-  },
-  photo: {
-    width: 51,
-    height: 51,
-    borderRadius: 26,
-    backgroundColor: '#D9D9D9',
-  },
-  name: {
-    maxWidth: '100%',
-    color: '#FFFFFF',
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 16,
-    fontWeight:'700'
-  },
-  email: {
-    maxWidth: '100%',
-    color: '#FFFFFF',
-    fontFamily: 'Poppins-Medium',
-    fontSize: 14,
-    fontWeight:'500'
-  },
-});
 
 export default Login;
