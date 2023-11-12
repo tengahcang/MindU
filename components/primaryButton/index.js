@@ -1,10 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {  Text, TouchableOpacity } from 'react-native';
 
-function PrimaryButton({ title }) {
+function PrimaryButton({ title ,color }) {
   return (
-    <TouchableOpacity style={styles.wrapper}>
-      <Text style={styles.text}>
+    <TouchableOpacity style={{    height: 40,
+      backgroundColor: color,
+      alignItems: 'center',
+      borderRadius: 12,}}>
+      <Text style={{    marginTop: 4,
+    textAlign: 'center',
+    fontFamily: 'Poppins',
+    fontSize: 20,
+    color: 'white',
+    fontWeight:'700'}}>
         {title}
       </Text>
     </TouchableOpacity>
@@ -13,19 +21,3 @@ function PrimaryButton({ title }) {
 
 export default PrimaryButton;
 
-const styles = StyleSheet.create({
-  wrapper: {
-    height: 40,
-    backgroundColor: '#B31217',
-    alignItems: 'center',
-    borderRadius: 12,
-  },
-  text: {
-    marginTop: 4,
-    textAlign: 'center',
-    fontFamily: 'Poppins',
-    fontSize: 20,
-    color: 'white',
-    fontWeight:'700'
-  },
-});

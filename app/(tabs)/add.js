@@ -41,7 +41,7 @@ const add = () => {
     return null;
   }
   return (
-      <SafeAreaView style={{flex:1, backgroundColor: 'white'}}>
+      <SafeAreaView style={{flex:1, backgroundColor: 'white'}} >
         <StatusBar backgroundColor="white" barStyle="dark-content"/>
         <View style={{flex:1,backgroundColor:'white', marginTop:25, marginBottom: 50}}>
           <NavbarTop/>

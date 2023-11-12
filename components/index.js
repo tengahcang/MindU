@@ -6,6 +6,8 @@ import Task from './task';
 import Separator from './Separator'
 import PrimaryButton from './primaryButton';
 import Calender from './Calender';
+import Input3 from './Input3';
+
 export{
-    ProfilUser,NavbarTop,Input,Task,Separator
+    ProfilUser,NavbarTop,Input,Task,Separator,Calender,PrimaryButton,Categories,Input3
 };
