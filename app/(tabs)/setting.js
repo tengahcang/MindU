@@ -16,7 +16,7 @@ const Setting = () => {
       </View>
       <Separator height={350}/>
       <View style={{padding:20}}>
-        <PrimaryButton title="Keluar"/>
+        <PrimaryButton title="Keluar" color={'#B31217'}/>
         <Center>App Version 1.0</Center>
       </View>
     </SafeAreaView>

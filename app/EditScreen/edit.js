@@ -1,10 +1,9 @@
-import { Input, Stack, Text, Image,TextArea, ScrollView,} from 'native-base'
+import { Input, View, Text, Image,TextArea, ScrollView,} from 'native-base'
 import { Separator,PrimaryButton} from '../../components'
-import { View } from 'react-native'
 import React,{useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { UploadIcon } from '../../assets/svgs';
-
+import { Stack } from 'expo-router'
 const edit = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -15,7 +14,8 @@ const edit = () => {
     ]);
     return (
         <ScrollView>
-            <Stack space={4} w="80%"  mx="auto">
+            <Stack.Screen options={{headerTitle:"Edit Task"}}/>
+            <View space={4} w="80%"  mx="auto">
                 <Separator/>
                 <Text bold>Nama Tugas</Text>
                 <Input size="md" borderColor="black" borderRadius={12}/>
@@ -40,7 +40,7 @@ const edit = () => {
             <Separator height={20}/>
             <PrimaryButton title="Simpan Perubahan" color="#2196F3"/>
             <Separator height={20}/>
-            </Stack>
+            </View>
         </ScrollView>
     );
   };

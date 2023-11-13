@@ -7,6 +7,7 @@ import { NativeBaseProvider } from 'native-base';
 import * as SplashScreen from 'expo-splash-screen';
 import halamanlogin from '../../assets/halamanlogin.png';
 import GoogleIcon from '../../assets/svgs/GoogleIcon';
+import { Link } from 'expo-router';
 
 const poppinsMedium = require('../../assets/fonts/Poppins-Medium.ttf');
 const poppinsSemiBold = require('../../assets/fonts/Poppins-SemiBold.ttf');
@@ -41,24 +42,29 @@ const Login = () => {
       untuk memulai perjalanan Anda menuju hal-hal yang terstruktur!
       </Text>
       <Separator height={40}/>
-      <TouchableOpacity style={{
-                marginRight: 7, 
-    backgroundColor: 'white', 
-    elevation: 6,
-    borderColor:'#2196F3',
-    borderWidth: 2,
-    alignItems: 'center',
-    paddingVertical: 8,
-    marginBottom: 10,
-    borderRadius: 30,
-    marginLeft: 40,
-    height: 60,
-    width: 300,
-              }}>
-                <Text style= {{fontWeight:'bold', color:'#2196F3', marginRight:30, marginTop:10}}>Masuk dengan Google</Text>
-                <GoogleIcon style={{marginLeft:180, bottom: 27}}>
-          </GoogleIcon>
-      </TouchableOpacity>
+        <TouchableOpacity style={{
+                  marginRight: 7, 
+      backgroundColor: 'white', 
+      elevation: 6,
+      borderColor:'#2196F3',
+      borderWidth: 2,
+      alignItems: 'center',
+      paddingVertical: 8,
+      marginBottom: 10,
+      borderRadius: 30,
+      marginLeft: 40,
+      height: 60,
+      width: 300,
+                }}>
+                  <Link href="/home">
+                    <View>
+                    <Text style= {{fontWeight:'bold', color:'#2196F3', marginRight:30, marginTop:10}}>Masuk dengan Google</Text>
+                    <GoogleIcon style={{marginLeft:180, bottom: 27}}>
+              </GoogleIcon>
+
+                    </View>
+                  </Link>
+        </TouchableOpacity>  
       </ImageBackground>
       
     </View>

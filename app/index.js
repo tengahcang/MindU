@@ -3,7 +3,7 @@ import { Redirect } from "expo-router"
 
 
 const StartPage =()=>{
-  return <Redirect href="/AddScreen/AddImageTask"/>
+  return <Redirect href="/login/login"/>
 }
 
 export default StartPage;

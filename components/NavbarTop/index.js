@@ -24,11 +24,10 @@ const NavbarTop = () => {
         Selamat Datang, Rochmat Wahyu Prayogi
       </Text>
       <Text style={{position: 'absolute',
-    zIndex: 1, 
-    top: 100,  
+    zIndex: 1,   
     fontSize: 12, 
     color: 'white', 
-    top: 10,
+    top: 50,
     left:10,
     fontWeight:'600'}}>
         Rabu,20-01-2023

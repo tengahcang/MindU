@@ -3,6 +3,7 @@ import { Text, View,TouchableOpacity
 } from 'react-native';
 import { DeleteIcon,EditIcon,CheckList,NoCheckList } from '../../assets/svgs';
 import { useState } from 'react';
+import { Link } from 'expo-router';
 const Task = ({title}) => {
   const trimmedTitle = title.length > 30 ? title.substring(0, 30) + "..." : title;
   const [showChecklistItem, setshowChecklistItem] = useState(false);
@@ -25,12 +26,16 @@ const Task = ({title}) => {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between'}}>
+      <Link href="/detail-task/detail-task" >
         <Text style={{    color: 'black',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 16,}} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
-        <View style={{flexDirection:'row'}}>
+      </Link>
+        <View style={{flexDirection:'row'}}>   
             <TouchableOpacity>
+              <Link href="EditScreen/edit">
                 <EditIcon width={35} height={35}/>
+              </Link>
             </TouchableOpacity>
             <TouchableOpacity>
                 <DeleteIcon width={35} height={35}/>

@@ -1,10 +1,12 @@
 import { View, Text, Image } from 'native-base'
 import React from 'react'
 import { Separator } from '../../components'
+import { Stack } from 'expo-router'
 
 const detailtask = () => {
   return (
     <View>
+      <Stack.Screen options={{headerTitle:"Detail Tugas"}}/>
       <Separator height={30}/>
       <Text ml={3} fontSize={25} color={"#2196F3"} fontWeight={'bold'}>Tugas Menpro Week 1</Text>
       <Text ml={4} fontSize={14} >21-03-2023 pukul 19:00</Text>
