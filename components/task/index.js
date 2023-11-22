@@ -5,7 +5,7 @@ import { DeleteIcon,EditIcon,CheckList,NoCheckList } from '../../assets/svgs';
 import { useState } from 'react';
 import { Link } from 'expo-router';
 const Task = ({title}) => {
-  const trimmedTitle = title.length > 30 ? title.substring(0, 30) + "..." : title;
+  const trimmedTitle = title.length > 20 ? title.substring(0, 20) + "..." : title;
   const [showChecklistItem, setshowChecklistItem] = useState(false);
   return (
     <View style={{borderRadius: 10,

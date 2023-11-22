@@ -1,13 +1,11 @@
-import { View, Text, StatusBar, SafeAreaView, TouchableOpacity, FlatList, ImageBackground} from 'react-native'
 import { useNavigation } from "@react-navigation/native";
 import React,{useCallback, useState,} from 'react'
-import { NavbarTop,Task,Separator } from '../../components'
 import { useFonts } from 'expo-font';
-import { NativeBaseProvider } from 'native-base';
+import { Center, View ,Text,Button} from 'native-base';
 import * as SplashScreen from 'expo-splash-screen';
-import halamanlogin from '../../assets/halamanlogin.png';
-import GoogleIcon from '../../assets/svgs/GoogleIcon';
+import { ForLogin1,IconLogin,GoogleIcon } from '../../assets/svgs';
 import { Link } from 'expo-router';
+import { Separator } from "../../components";
 
 const poppinsMedium = require('../../assets/fonts/Poppins-Medium.ttf');
 const poppinsSemiBold = require('../../assets/fonts/Poppins-SemiBold.ttf');
@@ -33,40 +31,34 @@ const Login = () => {
     return null;
   }
   return (
-    <View style={{flex:1}}>
-      <ImageBackground source={halamanlogin} style={{flex:1, justifyContent:'center'}}>
-      <Separator height={60}/>
-      <Text style={{fontWeight: 'bold', fontSize: 35, color:'#2196F3', textAlign: 'center', top:50}}>
-      Selamat Datang</Text>
-      <Text style={{fontWeight: 'bold', fontSize: 15, textAlign: 'center', padding: 20, top:40}}>Selamat datang di MIND U. Bersiaplah
-      untuk memulai perjalanan Anda menuju hal-hal yang terstruktur!
-      </Text>
+    <View onLayout={onLayoutRootView} background={"#006494"} h={"100%"}>
+      <Separator height={125}/>
+      <View marginLeft={5}>
+        <IconLogin/>
+      </View>
+      <Separator height={82}/>
+      <Center>
+        <Text fontSize={32} color={"#B1C9EF"}fontWeight={"bold"}>Selamat Datang</Text>
+      </Center>
+      <Center p={10}>
+        <Text textAlign={"center"} fontSize={16} color={"#fff"} fontWeight={"semibold"}>Selamat datang di MIND U. Bersiaplah untuk memulai perjalanan Anda menuju hal-hal yang terstruktur!</Text>
+      </Center>
+      <View px={10}>
+        <Button size="sm" variant="subtle" background={"white"} h={50} borderRadius={24}>
+          <Link href={"/home"} style={{flexDirection:"row"}}>
+              <Text fontSize={16} fontWeight={"semibold"} pt={1} marginRight={5}>Masuk Dengan Google</Text>
+              <GoogleIcon/>
+          </Link>
+        </Button>
+      </View>
       <Separator height={40}/>
-        <TouchableOpacity style={{
-                  marginRight: 7, 
-      backgroundColor: 'white', 
-      elevation: 6,
-      borderColor:'#2196F3',
-      borderWidth: 2,
-      alignItems: 'center',
-      paddingVertical: 8,
-      marginBottom: 10,
-      borderRadius: 30,
-      marginLeft: 40,
-      height: 60,
-      width: 300,
-                }}>
-                  <Link href="/home">
-                    <View>
-                    <Text style= {{fontWeight:'bold', color:'#2196F3', marginRight:30, marginTop:10}}>Masuk dengan Google</Text>
-                    <GoogleIcon style={{marginLeft:180, bottom: 27}}>
-              </GoogleIcon>
+      <Center>
+        <Text color={"white"} fontWeight={"bold"}>Made By Kelompok 1 IS 04-02</Text>
+      </Center>
+      <View position={"absolute"} zIndex={-1} top={70}>
+        <ForLogin1/>
+      </View>
 
-                    </View>
-                  </Link>
-        </TouchableOpacity>  
-      </ImageBackground>
-      
     </View>
     );
 }

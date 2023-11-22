@@ -8,9 +8,9 @@
     "userInterfaceStyle": "light",
     "scheme": "my-scheme",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splashh.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#006494"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -30,5 +30,6 @@
     "plugins": [
       "expo-router"
     ]
+    
   }
 }
