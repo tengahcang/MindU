@@ -4,7 +4,7 @@ import { ScrollView ,Box,Text, Center} from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import datas from '../../todolist'
 const Home = () => {
-  const [isHaveData, setisHaveData] = useState(true);
+  const [isHaveData, setisHaveData] = useState(false);
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
       <NavbarTopNew/>
@@ -18,9 +18,9 @@ const Home = () => {
       ) : (
 <ScrollView padding={5}>
         <Separator height={20}/>
-        <Task title={"pengen ke bali"}/>
+        <Task title={"Task1"}/>
         <Separator height={5}/>
-        <Task title={"pengen ke bali"}/>
+        <Task title={"Task2"}/>
         <Separator height={5}/>
         <Task title={"pengen ke bali"}/>
         <Separator height={5}/>
