@@ -1,9 +1,10 @@
-import { Input, View, Text, Image,TextArea, ScrollView,} from 'native-base'
+import { Input, View, Text, Image,TextArea, ScrollView} from 'native-base'
 import { Separator,PrimaryButton} from '../../components'
 import React,{useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { UploadIcon } from '../../assets/svgs';
 import { Stack } from 'expo-router'
+import { TouchableOpacity } from 'react-native'
 const edit = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -13,9 +14,9 @@ const edit = () => {
       {label: 'Kerja', value: 'kerja'},
     ]);
     return (
-        <ScrollView>
+        <ScrollView >
             <Stack.Screen options={{headerTitle:"Edit Task"}}/>
-            <View space={4} w="80%"  mx="auto">
+            <View space={4} p={5}  mx="auto" style={{flex:1, backgroundColor:'#D5DEEF',}}>
                 <Separator/>
                 <Text bold>Nama Tugas</Text>
                 <Input size="md" borderColor="black" borderRadius={12}/>
@@ -35,10 +36,12 @@ const edit = () => {
             <Text fontSize={16} fontWeight={'semibold'} >Gambar Task</Text>
             <View style={{flexDirection:'row',alignItems:'flex-end'}}>
                 <Image ml={5} size={'2xl'} source={{uri:"https://wallpaperaccess.com/full/317501.jpg"}}/>
-                <UploadIcon/>
+                <TouchableOpacity>
+                    <UploadIcon/>
+                </TouchableOpacity>
             </View>
             <Separator height={20}/>
-            <PrimaryButton title="Simpan Perubahan" color="#2196F3"/>
+            <PrimaryButton title="Simpan Perubahan" color="#2196F3" fs={16}/>
             <Separator height={20}/>
             </View>
         </ScrollView>

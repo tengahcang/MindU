@@ -1,28 +1,23 @@
 import { View, Text } from 'native-base'
 import React from 'react'
-import { PrimaryButton,NavbarTop, Task,Separator } from '../../components'
+import { PrimaryButton,NavbarTopNew, Task,Separator } from '../../components'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Link } from 'expo-router';
 const add = () => {
   return (
-    <View marginTop={50}>
-      <NavbarTop/>
-      <View flexDirection={'row'} marginTop={130}>
+    <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
+      <NavbarTopNew/>
+      <View flexDirection={'row'} position={'absolute'} bottom={5}>
         <View w={200} p={2}>
           <PrimaryButton title="Tambah Task" color="#2196F3"/>
         </View>
-        <View w={200} p={2}>
-          <PrimaryButton title="Tambah Lategori" color="#2196F3"/>
-        </View>
+        <Link href="/AddScreen/AddKategori" style={{textAlign:'center',justifyContent:'center'}}>
+          <View w={200} p={2}>
+            <PrimaryButton title="Tambah Kategori" color="#2196F3"/>
+          </View>
+        </Link>
       </View>
-      <Separator height={25}/>
-      <View p={2}>
-        <Task title="Pengen ke pro bahas inggris"/>
-        <Separator height={21}/>
-        <Task title="Pengen ke bali"/>
-        <Separator height={21}/>
-        <Task title="Pengen ke bali"/>
-        <Separator height={21}/>
-      </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

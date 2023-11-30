@@ -28,7 +28,6 @@ const Task = ({title}) => {
     justifyContent:'space-between'}}>
       <Link href="/detail-task/detail-task" >
         <Text style={{    color: 'black',
-    fontFamily: 'Poppins-SemiBold',
     fontSize: 16,}} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
       </Link>
         <View style={{flexDirection:'row'}}>   

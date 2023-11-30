@@ -1,37 +1,14 @@
-import { useNavigation } from "@react-navigation/native";
 import React,{useCallback, useState,} from 'react'
-import { useFonts } from 'expo-font';
 import { Center, View ,Text,Button} from 'native-base';
-import * as SplashScreen from 'expo-splash-screen';
 import { ForLogin1,IconLogin,GoogleIcon } from '../../assets/svgs';
 import { Link } from 'expo-router';
 import { Separator } from "../../components";
 
-const poppinsMedium = require('../../assets/fonts/Poppins-Medium.ttf');
-const poppinsSemiBold = require('../../assets/fonts/Poppins-SemiBold.ttf');
-const poppinsBold = require('../../assets/fonts/Poppins-Bold.ttf');
-
-SplashScreen.preventAutoHideAsync();
 
 const Login = () => {
   
-  const [fontsLoaded] = useFonts({
-    'Poppins-Medium': poppinsMedium,
-    'Poppins-SemiBold': poppinsSemiBold,
-    'Poppins-Bold': poppinsBold,
-  });
-  
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
   return (
-    <View onLayout={onLayoutRootView} background={"#006494"} h={"100%"}>
+    <View background={"#006494"} h={"100%"}>
       <Separator height={125}/>
       <View marginLeft={5}>
         <IconLogin/>
@@ -45,9 +22,11 @@ const Login = () => {
       </Center>
       <View px={10}>
         <Button size="sm" variant="subtle" background={"white"} h={50} borderRadius={24}>
-          <Link href={"/home"} style={{flexDirection:"row"}}>
-              <Text fontSize={16} fontWeight={"semibold"} pt={1} marginRight={5}>Masuk Dengan Google</Text>
-              <GoogleIcon/>
+          <Link href={"/categori"}>
+              <View flexDirection={"row"}>
+                <Text fontSize={16} fontWeight={"semibold"} pt={1} marginRight={5}>Masuk Dengan Google</Text>
+                <GoogleIcon/>
+              </View>
           </Link>
         </Button>
       </View>

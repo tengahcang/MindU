@@ -1,33 +1,52 @@
 import React from 'react'
-import { Center,Heading,View } from 'native-base'
-import { NavbarTop, PrimaryButton ,Task,Separator} from '../../components'
+import { Heading,View ,ScrollView} from 'native-base'
+import { NavbarTopNew, PrimaryButton ,Task,Separator} from '../../components'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Link } from 'expo-router';
+import Center from 'native-base/src/theme/components/center';
 
 const categori = () => {
   return (
-    <View marginTop={50}>
-      <NavbarTop/>
-      <Heading position={'absolute'}top={150} left={5}>Kategori</Heading>
-      <View position={'absolute'} top={200} left={25} flexDirection={'row'} justifyContent={'space-around'} alignItems={'center'}>
-        <View w={100}marginX={2}>
-          <PrimaryButton title="Kuliah" color="#2196F3"/>
+    <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
+      <NavbarTopNew/>
+      <Heading mt={10} ml={5}>Kategori</Heading>
+      <View flexDirection={"row"}>
+        <View w={107} m={2}>
+          <PrimaryButton title={"Kuliah"} color={"#2196F3"} fs={16}/>
         </View>
-        <View w={100} marginX={2}>
-          <PrimaryButton title="Rumah" color="#A4A4A4"/>
+        <View w={107} m={2}>
+          <PrimaryButton title={"Kerja"} color={"#FF1493"}fs={16}/>
         </View>
-        <View w={100} marginX={2}>
-          <PrimaryButton title="Kerja" color="#A4A4A4"/>
+        <View w={107} m={2}>
+          <PrimaryButton title={"Rumah"} color={"#30C10B"}fs={16}/>
         </View>
       </View>
-      <View marginTop={250} p={2}>
-        <PrimaryButton title="Arsip" color="#FFBE55"/>
-      </View>
-      <Task title="Pengen ke pro bahas inggris"/>
-        <Separator height={21}/>
+      
+      <Link href="/Arsip/Arsip" style={{textAlign:'center',justifyContent:'center'}}>
+        <View w={322}>
+          <PrimaryButton title={"Arsip"} color={"#FFBE55"}fs={16}/>
+        </View>
+      </Link>
+      <Separator height={20}/>
+      <ScrollView p={5}>
         <Task title="Pengen ke bali"/>
-        <Separator height={21}/>
+        <Separator height={5}/>
         <Task title="Pengen ke bali"/>
-        <Separator height={21}/>
-    </View>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+        <Task title="Pengen ke bali"/>
+        <Separator height={5}/>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

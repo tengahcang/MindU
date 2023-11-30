@@ -13,7 +13,7 @@ import IconLogin from "./IconLogin"
 import ForLogin1 from "./ForLogin1";
 import GoogleIcon from "./GoogleIcon";
 // import ForLogin2 from "./Forlogin2";
-
+import NotifikasiIcon from "./NotifikasiIcon";
 export{
-    Settings,AddIcon,HomeIcon,Categories,CalendarIcon,DeleteIcon,EditIcon,CheckList,NoCheckList,UploadIcon,AddImageIcon,ForLogin1,IconLogin,GoogleIcon
+    Settings,AddIcon,HomeIcon,Categories,CalendarIcon,DeleteIcon,EditIcon,CheckList,NoCheckList,UploadIcon,AddImageIcon,ForLogin1,IconLogin,GoogleIcon,NotifikasiIcon
 }

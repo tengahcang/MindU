@@ -8,7 +8,7 @@ function ProfilUser() {
 
   return (
     <View>
-      <View style={{ backgroundColor: '#2196F3',
+      <View style={{ backgroundColor: '#8AAEED',
     height: 74,
     borderRadius: 12,
     flexDirection: 'row',
@@ -33,13 +33,11 @@ function ProfilUser() {
             {/* <Text style={styles.name}>{name}</Text> */}
             <Text style={{ maxWidth: '100%',
             color: '#FFFFFF',
-            fontFamily: 'Poppins-SemiBold',
             fontSize: 16,
             fontWeight:'700'}}>Rochmat Wahyu Prayogi</Text>
             {/* <Text style={styles.email}>{email}</Text> */}
             <Text style={{    maxWidth: '100%',
             color: '#FFFFFF',
-            fontFamily: 'Poppins-Medium',
             fontSize: 14,
             fontWeight:'500'}}>rochmatwahy@gmail.com</Text>
           </View>

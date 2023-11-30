@@ -1,15 +1,11 @@
-import { View, Text, StatusBar, SafeAreaView } from 'react-native'
+import { View } from 'native-base'
 import React from 'react'
-import { NavbarTop,Calender,Separator } from '../../components'
-
+import { NavbarTopNew,Calender,Separator } from '../../components'
+import { SafeAreaView } from 'react-native-safe-area-context';
 const kalender = () => {
   return (
-    <SafeAreaView style={{flex:1}}>
-      <StatusBar backgroundColor="white" barStyle="dark-content"/>
-      <View style={{flex:1,backgroundColor:'white', marginTop:25}}>
-        <NavbarTop/> 
-      </View>
-      <Separator height={120}/>
+    <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
+      <NavbarTopNew/> 
       <View>
         <Calender/>
       </View>
