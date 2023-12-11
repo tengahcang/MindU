@@ -46,7 +46,7 @@ const logintest = () => {
       // Menyimpan data ke AsyncStorage
       await AsyncStorage.setItem("user-data", JSON.stringify(userData));
       // Diarahkan ke Home
-      navigation.replace("/home")
+      router.replace("/home")
     } catch (error) {
       console.error(error);
     }
