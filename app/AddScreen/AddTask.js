@@ -1,18 +1,95 @@
-import { View, StatusBar, SafeAreaView, Modal } from 'react-native'
-import React from 'react'
-import { Separator, PrimaryButton,Input3 } from '../../components'
+import { View, Button ,Input,Text,TextArea, ScrollView} from 'native-base'
+import React ,{useState} from 'react'
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Separator, PrimaryButton ,UploadMedia} from '../../components'
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Stack } from 'expo-router';
 const add = () => {
+  const [date, setDate] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
+
+  const onChangeDate = (event, selectedDate) => {
+    setShowDatePicker(false);
+
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
+
+  const onChangeTime = (event, selectedDate) => {
+    setShowTimePicker(false);
+
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
+
+  const showDatepicker = () => {
+    setShowDatePicker(true);
+    setShowTimePicker(false); // Menutup TimePicker jika terbuka
+  };
+
+  const showTimepicker = () => {
+    setShowTimePicker(true);
+    setShowDatePicker(false); // Menutup DatePicker jika terbuka
+  };
   return (
-    <SafeAreaView style={{flex:1}}>
-      <StatusBar backgroundColor="white" barStyle="dark-content"/>
-      <View style={{flex:1,backgroundColor:'white', marginTop:10 ,padding:20}}>
-        <Input3 type="Basic" label="Nama Tugas" />
-        <Separator height={500}/>
-        <View p={10}>
-          <PrimaryButton title="Simpan dan Lanjutkan" color="#2196F3"/>
-        </View>
-      </View> 
-    </SafeAreaView>
+    <View style={{backgroundColor:'#D5DEEF'}} h={"100%"}>
+
+      <SafeAreaView>
+        <Stack.Screen options={{headerTitle:"Add Task"}}/>
+        <ScrollView >
+          <View p={4}>
+            <Text fontSize={20}>Nama Tugas</Text>
+            <Input size="lg" placeholder="Isi Nama Tugas" />
+            <Text fontSize={20}>Tugas Catatan</Text>
+            <TextArea size="lg" placeholder="Isi Catatan Tugas" />
+            <Text fontSize={20}>Deadline Tugas</Text>
+          {/* Button to show DateTimePicker for Date */}
+          </View>
+          <View p={4}>
+          <Button onPress={showDatepicker}>
+            <Text>Pick a Date</Text>
+          </Button>
+          <Separator height={20}/>
+          {/* Button to show DateTimePicker for Time */}
+          <Button onPress={showTimepicker}>
+            <Text>Pick a Time</Text>
+          </Button>
+
+          {/* Date Picker */}
+          {showDatePicker && (
+            <DateTimePicker
+              value={date}
+              mode={"date"}
+              is24Hour={true}
+              onChange={onChangeDate}
+            />
+          )}
+
+          {/* Time Picker */}
+          {showTimePicker && (
+            <DateTimePicker
+              value={date}
+              mode={"time"}
+              is24Hour={true}
+              onChange={onChangeTime}
+            />
+          )}
+          <Separator height={20}/>
+          {/* Display selected date and time */}
+          <Input size="lg" placeholder="Isi Deadline Tugas" value={date.toLocaleString()} />
+
+          <UploadMedia/>
+          </View>
+          <View p={10}>
+            <PrimaryButton title="Simpan" color="#2196F3"/>
+          </View>
+
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 

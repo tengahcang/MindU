@@ -8,10 +8,12 @@ const add = () => {
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
       <NavbarTopNew/>
       <View flexDirection={'row'} position={'absolute'} bottom={5}>
-        <View w={200} p={2}>
-          <PrimaryButton title="Tambah Task" color="#2196F3"/>
-        </View>
-        <Link href="/AddScreen/AddKategori" style={{textAlign:'center',justifyContent:'center'}}>
+        <Link href="AddScreen/AddTask" style={{textAlign:'center',justifyContent:'center'}}>
+          <View w={200} p={2}>
+            <PrimaryButton title="Tambah Task" color="#2196F3"/>
+          </View>
+        </Link>
+        <Link href="AddScreen/AddKategori" style={{textAlign:'center',justifyContent:'center'}}>
           <View w={200} p={2}>
             <PrimaryButton title="Tambah Kategori" color="#2196F3"/>
           </View>
@@ -21,4 +23,4 @@ const add = () => {
   )
 }
 
-export default add
+export default add;

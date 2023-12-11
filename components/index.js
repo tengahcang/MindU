@@ -8,6 +8,7 @@ import PrimaryButton from './primaryButton';
 import Calender from './Calender';
 import Input3 from './Input3';
 import NavbarTopNew from './NavbarTopNew';
+import UploadMedia from './UploadMedia';
 export{
-    ProfilUser,NavbarTop,Input,Task,Separator,Calender,PrimaryButton,Categories,Input3,NavbarTopNew
+    ProfilUser,NavbarTop,Input,Task,Separator,Calender,PrimaryButton,Categories,Input3,NavbarTopNew,UploadMedia
 };

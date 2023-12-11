@@ -24,11 +24,6 @@ const Calender = () => {
       <ScrollView p={3}>
         <Task title={item.title}/>
       </ScrollView>
-      // <Box rounded="xl" borderWidth={1} m={10} bg="white">
-      //   <Text> {item.title} </Text>
-      //   <Text> {item.date} </Text>
-      //   <Text> {item.content} </Text>
-      // </Box>
     );
   };
 

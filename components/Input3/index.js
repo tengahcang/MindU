@@ -24,7 +24,7 @@ function Input3({
         {label}
       </Text>
       )}
-      {type === 'Basic' && <TextInput style={styles.textInputBasic} onChangeText={onChange} />}
+      {type === 'Basic' && <TextInput  style={styles.textInputBasic} onChangeText={onChange} />}
       {type === 'TextArea' && <TextInput multiline style={styles.textInputArea} onChangeText={onChange} />}
       {type === 'Dropdown' && (
       <View>
