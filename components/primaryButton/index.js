@@ -1,9 +1,9 @@
 import React from 'react';
 import {  Text, TouchableOpacity } from 'react-native';
 
-function PrimaryButton({ title ,color,fs }) {
+function PrimaryButton({ title ,color,fs,onPress }) {
   return (
-    <TouchableOpacity style={{    height: 40,
+    <TouchableOpacity onPress={onPress} style={{    height: 40,
       backgroundColor: color,
       alignItems: 'center',
       borderRadius: 12,}}>
