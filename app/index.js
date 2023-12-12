@@ -3,7 +3,7 @@ import { Redirect } from "expo-router"
 
 
 const StartPage =()=>{
-  return <Redirect href="/registertest/registertest"/>
+  return <Redirect href="/logintest/logintest"/>
 }
 
 export default StartPage;

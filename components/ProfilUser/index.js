@@ -3,7 +3,7 @@ import {
   Image, Text, TouchableOpacity, View,
 } from 'react-native';
 
-function ProfilUser() {
+function ProfilUser({email}) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (
@@ -34,12 +34,12 @@ function ProfilUser() {
             <Text style={{ maxWidth: '100%',
             color: '#FFFFFF',
             fontSize: 16,
-            fontWeight:'700'}}>Rochmat Wahyu Prayogi</Text>
+            fontWeight:'700'}}> {email} </Text>
             {/* <Text style={styles.email}>{email}</Text> */}
             <Text style={{    maxWidth: '100%',
             color: '#FFFFFF',
             fontSize: 14,
-            fontWeight:'500'}}>rochmatwahy@gmail.com</Text>
+            fontWeight:'500'}}> {email} </Text>
           </View>
         </View>
         <View style={{marginRight: 20}}>
