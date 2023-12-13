@@ -3,7 +3,7 @@ import "firebase/compat/auth";
 import firebase from "firebase/compat/app"
 
 
-const firebaseConfig ={
+const firebaseConfig = {
     apiKey: "AIzaSyBsyBWsfRaDmR8CgSBjsep5FSs7UtORyAA",
     authDomain: "mindu-b28e3.firebaseapp.com",
     projectId: "mindu-b28e3",

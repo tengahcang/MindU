@@ -2,7 +2,7 @@ import { View, Text, Alert, SafeAreaView, TouchableOpacity,Image } from 'react-n
 import React,{useState} from 'react'
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system'
-import {firebase} from '../../config'
+import firebase from '../../config'
 
 
 const uploadmedia = () => {
@@ -26,7 +26,7 @@ const uploadmedia = () => {
 
         try{
             const {uri} = await FileSystem.getInfoAsync(image);
-            const blob = await new Promise((resolve,reject)=>{
+            const blob = await new Promise((resolve,reject) => { 
                 const xhr = new XMLHttpRequest();
                 xhr.onload = () => {
                     resolve(xhr.response);
@@ -34,7 +34,7 @@ const uploadmedia = () => {
                 xhr.onerror = (e) =>{
                     reject(new TypeError('Ntework request failed'))
                 };
-                xhr.responseType = 'blob';
+                xhr.responseType = 'blob'
                 xhr.open('GET',uri,true);
                 xhr.send(null)
             });
