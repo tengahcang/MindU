@@ -43,7 +43,7 @@ const uploadmedia = () => {
 
             await ref.put(blob);
             setUploading(false);
-            Alert.alert("photo Upload");
+            Alert.alert(filename);
             setImage(null);
         }catch(error){
             console.error(error);
