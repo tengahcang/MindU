@@ -8,70 +8,165 @@ const data7 = "Buat presentasi proyek, Kumpulkan dokumen-dokumen";
 const data8 = "Buat rencana liburan, Pesan tiket pesawat";
 const data9 = "Review buku, Tulis artikel";
 const todolist = [
-    {
-        id: 1,
-        date: "2023-11-10",
-        title: "main game",
-        category: "personal",
-        content: data1
-    },{
-        id: 2,
-        date: "2023-11-11",
-        title: "nugas bang",
-        category: "collage",
-        content: data2
-    },{
-        id: 3,
-        date: "2023-11-13",
-        title: "main game",
-        category: "home",
-        content: data1
-    },{
-        id: 4,
-        date: "2023-11-12",
-        title: "Belanja ke supermarket",
-        category: "personal",
-        content: data3
+  {
+    id: 1,
+    date:"2023-11-15", // date pada 15 Desember 2023
+    namatask: "Tugas Satu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Pentinga",
+      warna: "#ff5733",
     },
-    {
-        id: 5,
-        date: "2023-11-14",
-        title: "Meeting tim proyek",
-        category: "work",
-        content: data4
+    image: null,
+  },
+  {
+    id: 2,
+    date:"2023-11-20", // date pada 20 Desember 2023
+    namatask: "Tugas Dusasa",
+    category: {
+      nama: "Umusm",
+      warna: "#3366ff",
     },
-    {
-        id: 6,
-        date: "2023-11-15",
-        title: "Aktivitas rutin",
-        category: "personal",
-        content: data5
-    },{
-        id: 7,
-        date: "2023-11-16",
-        title: "Aktivitas seni",
-        category: "personal",
-        content: data6
+    image: "",
+  },
+  {
+    id: 3,
+    namatask: "Tugas sasas",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Pentinaag",
+      warna: "#ff5733",
     },
-    {
-        id: 8,
-        date: "2023-11-17",
-        title: "Persiapan proyek",
-        category: "work",
-        content: data7
-    },{
-        id: 9,
-        date: "2023-11-15",
-        title: "Rencana liburan",
-        category: "personal",
-        content: data8
+    date: "2023-11-25", // date pada 25 Desember 2023
+  },
+  {
+    id: 4,
+    namatask: "Tugassassa Dua",
+    category: {
+      nama: "Umum",
+      warna: "#3366ff",
     },
-    {
-        id: 10,
-        date: "2023-11-15",
-        title: "Kegiatan literasi",
-        category: "personal",
-        content: data9
+    date: "2023-11-30", // date pada 30 Desember 2023
+  },
+  {
+    id: 5,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
     },
+    date: "2023-11-10", // date pada 10 Desember 2023
+  },
+  {
+    id: 6,
+    namatask: "Tugas sassDua",
+    category: {
+      nama: "Umum",
+      warna: "#3366ff",
+    },
+    date: "2023-11-5" // date pada 5 Desember 2023
+  },
+  {
+    id: 7,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-12", // date pada 12 Desember 2023
+  },
+  {
+    id: 8,
+    namatask: "ssasac Dua",
+    category: {
+      nama: "Umum",
+      warna: "#3366ff",
+    },
+    date: "2023-11-18", // date pada 18 Desember 2023
+  },
+  {
+    id: 9,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-22", // date pada 22 Desember 2023
+  },
+  {
+    id: 10,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-8" // date pada 8 Desember 2023
+  },
+  {
+    id: 11,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-14", // date pada 14 Desember 2023
+  },
+  {
+    id: 12,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-19", // date pada 19 Desember 2023
+  },
+  {
+    id: 13,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-27", // date pada 27 Desember 2023
+  },
+  {
+    id: 14,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-3" // date pada 3 Desember 2023
+  },
+  {
+    id: 15,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-17", // date pada 17 Desember 2023
+  },
+  {
+    id: 16,
+    namatask: "Tugas Ssasatu",
+    catatan: "Ini adalah catatan untuk tugas satu",
+    category: {
+      nama: "Penting",
+      warna: "#ff5733",
+    },
+    date: "2023-11-10", // date pada 24 Desember 2023
+  },
 ];
+
+
 export default todolist;

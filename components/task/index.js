@@ -4,16 +4,7 @@ import { Text, View,TouchableOpacity
 import { DeleteIcon,EditIcon,CheckList,NoCheckList } from '../../assets/svgs';
 import { useState } from 'react';
 import { Link } from 'expo-router';
-const Task = ({title}) => {
-  const categoryTaskMapping = {
-    'Task1': { category: 'Kategori1', color: 'red' },
-    'Task2': { category: 'Kategori2',  color: 'blue' },
-    'Task3': { category: 'Kategori3',  color: 'green' },
-    // tambahkan task dan relasi kategori sesuai kebutuhan
-  };
-  const taskInfo = categoryTaskMapping[title] || {};
-  const { category, color } = taskInfo;
-
+const Task = ({title,color}) => {
 
   const trimmedTitle = title.length > 20 ? title.substring(0, 20) + "..." : title;
   const [showChecklistItem, setshowChecklistItem] = useState(false);
