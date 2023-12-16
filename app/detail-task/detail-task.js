@@ -8,26 +8,42 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import firebase from '../../config';
 
-
 const detailtask = () => {
-  const [UrlPic,setUrlPic]= useState();
-  const params =useLocalSearchParams();
-  const imageRef = firebase.storage().ref(params.foto);
-  useEffect(() => {
-    getpic();
-  },[]);
-  const getpic = () =>{
-    imageRef.getDownloadURL().then((url) => {
-      // Gunakan URL ini untuk menampilkan gambar di aplikasi Anda
-      console.log('URL gambar:', url);
-      setUrlPic(url);
-    }).catch((error) => {
-      // Tangani kesalahan jika terjadi
-      console.error('Error mendapatkan URL gambar:', error);
-    });    
-  }
-  
+  const [UrlPic, setUrlPic] = useState();
+  const params = useLocalSearchParams();
+  const imageRef = params.foto ? firebase.storage().ref(params.foto) : null;
 
+  useEffect(() => {
+    if (imageRef) {
+      getpic();
+    }
+  }, []);
+
+  const getpic = () => {
+    if (!imageRef) {
+      console.warn('Referensi gambar tidak ditemukan.');
+      // Set UrlPic ke nilai default atau kosong sesuai kebutuhan aplikasi Anda
+      setUrlPic(null); // atau setUrlPic(''); atau setUrlPic(DEFAULT_URL);
+      return;
+    }
+
+    imageRef
+      .getDownloadURL()
+      .then((url) => {
+        // Gunakan URL ini untuk menampilkan gambar di aplikasi Anda
+        console.log('URL gambar:', url);
+        setUrlPic(url);
+      })
+      .catch((error) => {
+        if (error.code === 'storage/object-not-found') {
+          console.warn('Gambar tidak ditemukan.');
+          // Set UrlPic ke nilai default atau kosong sesuai kebutuhan aplikasi Anda
+          setUrlPic(null); // atau setUrlPic(''); atau setUrlPic(DEFAULT_URL);
+        } else {
+          console.error('Error mendapatkan URL gambar:', error);
+        }
+      });
+  };
 
   return (
     <>
@@ -44,9 +60,13 @@ const detailtask = () => {
         {/* <Text> {UrlPic} </Text> */}
         <Separator height={30}/>
         <Text ml={4} fontSize={16} fontWeight={'semibold'} >Gambar Task</Text>
+        {UrlPic ? (
         <Lightbox>
-          <Image ml={5} size={'2xl'} source={{ uri: UrlPic }} />
+          <Image ml={5} flex={1} h={150} resizeMode='contain' source={{ uri: UrlPic }} />
         </Lightbox>
+        ) : (
+          <Text ml={5} fontSize={15}>Gambar tidak tersedia</Text>
+        )}
       </ScrollView>
     </>
   )

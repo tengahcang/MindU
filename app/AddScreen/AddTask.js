@@ -9,8 +9,10 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import firebase from '../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DropDownPicker from 'react-native-dropdown-picker';
 const add = () => {
   const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [Tugas,setTugas] = useState("");
@@ -20,6 +22,11 @@ const add = () => {
   const [image,setImage] = useState(null);
   const [uploading,setUploading] = useState(false);
   const [userData, setUserData] = useState({});
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'}
+  ]);
   useEffect(() => {
     getUserData();
   }, []);
@@ -179,6 +186,14 @@ const add = () => {
             <View p={4}>
               <Text fontSize={20}>Nama Tugas</Text>
               <Input size="lg" placeholder="Isi Nama Tugas" onChangeText={(Tugas) => setTugas(Tugas)} />
+              <DropDownPicker
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+              />
               <Text fontSize={20}>Tugas Catatan</Text>
               <TextArea size="lg" placeholder="Isi Catatan Tugas" onChangeText={(Catatan) => setCatatan(Catatan)} />
               <Text fontSize={20}>Deadline Tugas</Text>
