@@ -4,7 +4,7 @@ import { Text, View,TouchableOpacity
 import { DeleteIcon,EditIcon,CheckList,NoCheckList } from '../../assets/svgs';
 import { useState } from 'react';
 import { Link } from 'expo-router';
-const Task = ({title, Deadline, Catatan, Foto}) => {
+const Task = ({ title, Deadline, Catatan, Foto, Warna, Kategori }) => {
   const categoryTaskMapping = {
     'Task1': { category: 'Kategori1', color: 'red' },
     'Task2': { category: 'Kategori2',  color: 'blue' },
@@ -16,7 +16,7 @@ const Task = ({title, Deadline, Catatan, Foto}) => {
   const trimmedTitle = title.length > 20 ? title.substring(0, 20) + "..." : title;
   const [showChecklistItem, setshowChecklistItem] = useState(false);
   return (
-    <View style={{borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: color, padding: 15,}}>
+    <View style={{borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: Warna, padding: 15,}}>
       <View>
         <TouchableOpacity onPress={() => { 
           setshowChecklistItem(!showChecklistItem); 
@@ -25,7 +25,7 @@ const Task = ({title, Deadline, Catatan, Foto}) => {
         </TouchableOpacity>
       </View>
       <View style={{width: '80%', flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'}}>
-        <Link href={{pathname:"/detail-task/detail-task", params:{"title":title,"deadline":Deadline,"catatan":Catatan,"foto":Foto}}} >
+        <Link href={{pathname:"/detail-task/detail-task", params:{"title":title,"deadline":Deadline,"catatan":Catatan,"foto":Foto,"kategori":Kategori}}} >
           <Text style={{ color: 'black', fontSize: 16 }} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
         </Link>
         <View style={{flexDirection:'row'}}>

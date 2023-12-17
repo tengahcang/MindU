@@ -7,27 +7,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import firebase from '../../config';
 
 const Home = () => {
-  
-  
   const [isHaveData, setisHaveData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
   const [data, setData] = useState([]);
-
-
+  const [dataKategori,setDataKategori] = useState([]);
   useEffect(() => {
     getUserData();
   }, []);
   const getUserData = async () => {
     try {
-      // Ambil data dari AsyncStorage
       const value = await AsyncStorage.getItem("user-data");
       if (value !== null) {
         const valueObject = JSON.parse(value);
-        // Update value state bernama "data"
         setUserData(valueObject);
-        // console.log(userData.email);
-        // Fetch Data
+        ambilkategori(valueObject);
         fetchData(valueObject);
       }
     } catch (e) {
@@ -36,49 +30,38 @@ const Home = () => {
   };
   const fetchData = (userData) => {
     const uid = userData.credential.user.uid;
-    // Mendefinisikan Ref
     const dataRef = firebase.database().ref("Task/" + uid);
-
-    // Memantau perubahan Data di Firebase
-    // dataRef.on("value", (snapshot) => {
-    //   const dataValue = snapshot.val();
-    //   if (dataValue != null) {
-    //     const snapshotArr = Object.entries(dataValue).map((item) => {
-    //       return {
-    //         id: item[0],
-    //         ...item[1],
-    //       };
-    //     });
-    //     setData(snapshotArr);
-    //   }
-    //   setIsLoading(false);
-    // });
-
-    // Ambil Data dari Firebase
-    dataRef
-      .once("value")
-      .then((snapshot) => {
-        const dataValue = snapshot.val();
-        if (dataValue != null) {
-          // Dirapikan datanya disusun menjadi Array of Object
-          const snapshotArr = Object.entries(dataValue).map((item) => {
-            return {
-              id: item[0],
-              ...item[1],
-            };
-          });
-
-          // Mengupdate State yang bernama "data"
-          setData(snapshotArr);
-          console.log(data)
-        }
-        setIsLoading(false);
-        
-
-      })
-      .catch((e) => {
+    dataRef.once("value").then((snapshot) => {
+      const dataValue = snapshot.val();
+      if (dataValue != null) {
+        const snapshotArr = Object.entries(dataValue).map((item) => {
+          return {
+            id: item[0],
+            ...item[1],
+          };
+        });
+        setData(snapshotArr);
+      }
+      setIsLoading(false);
+      }).catch((e) => {
         console.error(e);
       });
+  };
+  const ambilkategori = (userData) => {
+    const uid = userData.credential.user.uid;
+    const dataref = firebase.database().ref("Kategori/"+uid);
+    dataref.once("value").then((snapshot) => {
+      const dataValue = snapshot.val();
+      if (dataValue != null) {
+        const snapshotArr = Object.entries(dataValue).map((item) => {
+          return {
+            id: item[0],
+            ...item[1],
+          };
+        });
+        setDataKategori(snapshotArr);
+      }
+    })
   };
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
@@ -100,12 +83,11 @@ const Home = () => {
             <Separator height={20}/>
             {data.map((obj, index) => (
               <React.Fragment key={index}>
-                <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} />
+                <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
                 <Separator height={5} />
               </React.Fragment>
             ))}
-            
-            <Task title={"Task1"}/>
+            {/* <Task title={"Task1"}/>
             <Separator height={5}/>
             <Task title={"Task2"}/>
             <Separator height={5}/>
@@ -128,9 +110,7 @@ const Home = () => {
             <Task title={"pengen ke bali"}/>
             <Separator height={5}/>
             <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            
-            {/* <Text>({data})</Text> */}
+            <Separator height={5}/> */}
           </ScrollView>
         )
         
