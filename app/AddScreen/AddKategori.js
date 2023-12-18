@@ -1,72 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert } from "react-native";
 import { View, Input,Text,FormControl } from 'native-base';
-import { ColorPicker, fromHsv } from 'react-native-color-picker';
+import { ColorPicker, fromHsv, toHsv } from 'react-native-color-picker';
 import { PrimaryButton, Separator } from '../../components';
 import { Stack, router } from 'expo-router';
 // import { getData } from '../../utils/Localstorage';
-import FIREBASE from '../../config'
+import firebase from '../../config'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const AddKategori = () => {
-  const [currentColor, setCurrentColor] = useState('#000000'); // Default color or any initial color
-  const [NamaKategori,SetNamaKategori] = useState("")
+  const [currentColor, setCurrentColor] = useState('#000000'); // 
+  const [NamaKategori,SetNamaKategori] = useState("");
+  const [value,setValue] = useState (null);
+  const [userData,setUserData] = useState({});
+  useEffect(() => {
+    getUserData();
+  }, []);
   const warnaApa = (color) => {
     setCurrentColor(color);
   };
-  const addKategori = async (data) => {
+  const getUserData = async() => {
     try {
-      // Ambil data yg sudah login dari fungsi 'getData'
-      
-      const userData = {
-        uid: 'GwYpmIPGmuUMEIPOrJbyw5FeQxH3', // Replace with the actual user ID
-      };
-      if (userData) {
-        // Tambah note sesuai uid
-        const dataBaru = {
-          ...data,
-          uid: userData.uid,
-        };
-  
-        await FIREBASE.database()
-          .ref("kategori/" + userData.uid)
-          .push(dataBaru);
-  
-        console.log("kategori added successfully");
-      } else {
-        Alert.alert("Error", "Login Terlebih Dahulu");
+      const value = await AsyncStorage.getItem("user-data");
+      if (value !== null) {
+        const valueObject = JSON.parse(value)
+        setUserData(valueObject)
       }
     } catch (error) {
-      throw error;
+      console.error(error)
     }
   };
-const OnAddKategori = async () => {
-    if (NamaKategori && currentColor) {
-      const data = {
-        currentColor: currentColor,
-        NamaKategori: NamaKategori,
-      };
-
-      console.log(data);
-      try {
-        const user = await addKategori(data);
-        router.replace("/home")
-      } catch (error) {
-        console.log("Error", error.message);
-      }
-    } else {
-      console.log("Error", "Data tidak lengkap");
-    }
+  const addKategori = (Kategori,Color) => {
+    const data = {
+      Kategori: Kategori,
+      Color: Color
     };
-
+    const uid = userData.credential.user.uid;
+    firebase.database().ref("Kategori/"+uid).push(data);
+    router.replace("/home")
+  };
   return (
     <View flex={1} padding={4} backgroundColor={'#D5DEEF'}>
       <Stack.Screen options={{headerTitle:"Add Kategori"}}/>
       <FormControl isRequired>
         <FormControl.Label fontSize={20}>Nama Kategori</FormControl.Label>
-        <Input 
-        size="lg" 
-        placeholder="Isi Nama Kategori" 
-        value={NamaKategori}
-        onChangeText={(NamaKategori) => SetNamaKategori(NamaKategori)}/>
+        <Input size="lg" placeholder="Isi Nama Kategori"  value={NamaKategori} onChangeText={(NamaKategori) => SetNamaKategori(NamaKategori)}/>
         <FormControl.Label fontSize={20}>Pilih Warna</FormControl.Label>
         <ColorPicker
           onColorSelected={(color) => warnaApa(color)}
@@ -74,13 +51,11 @@ const OnAddKategori = async () => {
           hideSliders={true}
           style={{ width: 200, height: 200 }}
         />
-        <Input 
-        size="lg" 
-        placeholder="hex color" 
-        value={currentColor} 
-        onChangeText={(currentColor) => SetcurrentColor(currentColor)} />
+        
+        <Input size="lg" placeholder="hex color" value={currentColor} onChangeText={(currentColor) => setCurrentColor(currentColor)} />
+        
         <Separator height={20}/>
-        <PrimaryButton title="Tambah Kategori" color="#2196F3" onPress={OnAddKategori}/>
+        <PrimaryButton title="Tambah Kategori" color="#2196F3" onPress={()=>addKategori(NamaKategori,currentColor)}/>
       </FormControl>
     </View>
   );

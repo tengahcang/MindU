@@ -53,7 +53,7 @@ const detailtask = () => {
         <Text ml={4} fontSize={14}> {params.deadline} </Text>
         <Separator height={30}/>
         <Text ml={4} fontSize={16} fontWeight={'semibold'} >Kategori</Text>
-        <Text ml={4} fontSize={15}>Kuliah</Text>
+        <Text ml={4} fontSize={15}> { params.kategori } </Text>
         <Separator height={30}/>
         <Text ml={4} fontSize={16} fontWeight={'semibold'} >Catatan</Text>
         <Text ml={4} fontSize={15}> {params.catatan} </Text>
