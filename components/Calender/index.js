@@ -22,9 +22,15 @@ const Calender = () => {
 
   const ToDoList = ({ item }) => {
     return (
-      <ScrollView p={3}>
-        <Task title={item.namatask} />
-      </ScrollView>
+    <ScrollView padding={5}>
+      <Separator height={20}/>
+      {data.map((obj, index) => (
+        <React.Fragment key={index}>
+          <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
+          <Separator height={5} />
+        </React.Fragment>
+      ))}
+    </ScrollView>
     );
   };
 

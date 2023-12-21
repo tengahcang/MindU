@@ -6,6 +6,7 @@ import datas from '../../todolist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firebase from '../../config';
 
+
 const Home = () => {
   const [isHaveData, setisHaveData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -69,52 +70,32 @@ const Home = () => {
       <Box background={'white'} w={173} h={27} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
             <Text fontSize={12} fontWeight={'semibold'}>Selasa, 24 Desember 2023</Text>
       </Box>
-      {isHaveData ? (
-        <Center flex={1}>
-          <Text fontWeight={"bold"} fontSize={16}>TIDAK ADA TUGAS HARI INI</Text>
-        </Center>
-      ) : (
-        isLoading ? (
-          <Center>
-            <Spinner size={"lg"} color={"black"} />
-          </Center>
-        ):(
-          <ScrollView padding={5}>
-            <Separator height={20}/>
-            {data.map((obj, index) => (
-              <React.Fragment key={index}>
-                <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
-                <Separator height={5} />
-              </React.Fragment>
-            ))}
-            {/* <Task title={"Task1"}/>
-            <Separator height={5}/>
-            <Task title={"Task2"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/>
-            <Task title={"pengen ke bali"}/>
-            <Separator height={5}/> */}
-          </ScrollView>
-        )
+      <SafeAreaView >
         
-      )}
+        {isHaveData ? (
+          <Center flex={1}>
+            <Text fontWeight={"bold"} fontSize={16}>TIDAK ADA TUGAS HARI INI</Text>
+          </Center>
+        ) : (
+          isLoading ? (
+            <Center>
+              <Spinner size={"lg"} color={"black"} />
+            </Center>
+          ):(
+            <ScrollView padding={5}>
+              <Separator height={20}/>
+              {data.map((obj, index) => (
+                <React.Fragment key={index}>
+                  <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
+                  <Separator height={5} />
+                </React.Fragment>
+              ))}
+            </ScrollView>
+          )
+          
+        )}
+      </SafeAreaView>
+    
     </SafeAreaView>
   );
 };

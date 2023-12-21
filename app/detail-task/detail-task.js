@@ -62,7 +62,7 @@ const detailtask = () => {
         <Text ml={4} fontSize={16} fontWeight={'semibold'} >Gambar Task</Text>
         {UrlPic ? (
         <Lightbox>
-          <Image ml={5} flex={1} h={150} resizeMode='contain' source={{ uri: UrlPic }} />
+          <Image ml={5} flex={1} h={300} w={300}  resizeMode='contain' source={{ uri: UrlPic }} />
         </Lightbox>
         ) : (
           <Text ml={5} fontSize={15}>Gambar tidak tersedia</Text>
