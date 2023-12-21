@@ -11,7 +11,7 @@ const Home = () => {
   const [isHaveData, setisHaveData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [dataKategori,setDataKategori] = useState([]);
   useEffect(() => {
     getUserData();
