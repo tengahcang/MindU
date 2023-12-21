@@ -10,6 +10,7 @@ const StackLayout = () => {
       <Stack>
         <Stack.Screen name="(tabs)" options={noHead} />
         <Stack.Screen name="login/login" options={noHead} />
+        
       </Stack>
     </NativeBaseProvider>
   );

@@ -66,7 +66,7 @@ const Home = () => {
   };
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew name={ userData.email } />
+      <NavbarTopNew name={ userData.name } />
       <Box background={'white'} w={173} h={27} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
             <Text fontSize={12} fontWeight={'semibold'}>Selasa, 24 Desember 2023</Text>
       </Box>

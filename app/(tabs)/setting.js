@@ -37,20 +37,20 @@ const Setting = () => {
   const clearUserData = async () => {
     try {
       await AsyncStorage.clear();
-      router.replace("/logintest/logintest");
+      router.replace("newloginscreen");
     } catch (e) {
       console.error(e);
     }
   };
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew/> 
+      <NavbarTopNew name={userData.name}/> 
       <View ml={5}>
         <Separator height={5}/>
         <Heading>Profil & Settings</Heading>
         <Separator height={20}/>
         <View p={5}>
-          <ProfilUser email={userData.email} />
+          <ProfilUser name={userData.name} email={userData.email} />
         </View>
       </View>
       <Separator height={350}/>

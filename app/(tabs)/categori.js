@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Heading, View, ScrollView } from 'native-base';
 import { NavbarTopNew, PrimaryButton, Task, Separator } from '../../components';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import todolist from '../../todolist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import firebase from "../../config";
@@ -21,7 +20,6 @@ const Categori = () => {
   const [dataKategori,setDataKategori] = useState([]);
   const [dataTugas,setDataTugas] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const uniqueCategories = extractUniqueCategories(todolist);
   useEffect(() => {
     getUserData();
   }, [])
@@ -78,7 +76,7 @@ const Categori = () => {
   // );
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
-      <NavbarTopNew name={ userData.email } />
+      <NavbarTopNew name={ userData.name } />
       <Heading mt={10} ml={5}>
         Kategori
       </Heading>

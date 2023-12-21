@@ -3,7 +3,7 @@ import {
   Image, Text, TouchableOpacity, View,
 } from 'react-native';
 
-function ProfilUser({email}) {
+function ProfilUser({email,name}) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (
@@ -34,7 +34,7 @@ function ProfilUser({email}) {
             <Text style={{ maxWidth: '100%',
             color: '#FFFFFF',
             fontSize: 16,
-            fontWeight:'700'}}> {email} </Text>
+            fontWeight:'700'}}> {name} </Text>
             {/* <Text style={styles.email}>{email}</Text> */}
             <Text style={{    maxWidth: '100%',
             color: '#FFFFFF',
@@ -43,11 +43,6 @@ function ProfilUser({email}) {
           </View>
         </View>
         <View style={{marginRight: 20}}>
-          {/* <TouchableOpacity onPress={() => setIsSelected(!isSelected)}>
-            <View style={styles.radioOuterCircle}>
-              {isSelected && (<View style={styles.radioInnerCircle} />)}
-            </View>
-          </TouchableOpacity> */}
         </View>
       </View>
     </View>
