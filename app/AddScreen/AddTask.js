@@ -1,4 +1,4 @@
-import { View, Button ,Input,Text,TextArea, ScrollView, FormControl } from 'native-base'
+import { View, Button ,Input,Text,TextArea, ScrollView, FormControl ,Box} from 'native-base'
 import React ,{useState,useEffect} from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Separator, PrimaryButton} from '../../components';
@@ -68,7 +68,7 @@ const add = () => {
     const ref = firebase.storage().ref().child(filename);
     try {
       await ref.put(blob);
-      adddata(Tugas, Catatan, Deadline, filename);
+      adddata(Tugas, Catatan, Deadline,value, filename);
     } catch (error) {
       console.error('Error uploading image:', error);
       throw error;
@@ -103,10 +103,11 @@ const add = () => {
       }
     })
   };
-  const adddata = (Tugas,Catatan,Deadline,filename) =>{
+  const adddata = (Tugas,Catatan,Deadline,Kategori,filename) =>{
     const data = {
       NamaTugas:  Tugas,
       TugasCatatan:  Catatan,
+      KategoriTugas: Kategori,
       DeadlineTugas:  Deadline,
       LampiranFoto:  filename
     };
@@ -170,7 +171,10 @@ const add = () => {
                 <DateTimePicker value={date} mode={"time"} is24Hour={true} onChange={onChangeTime} />
               )}
               <Separator height={20}/>
-              <Input size="lg" placeholder="Isi Deadline Tugas" value={Deadline} onChangeDate={(newDeadline)=>setDeadline(newDeadline)} />
+              <Box>
+                <Text onChangeDate={(newDeadline)=>setDeadline(newDeadline)}>{Deadline}</Text>
+              </Box>
+              {/* <Input size="lg"  placeholder="Isi Deadline Tugas" value={Deadline} onChangeDate={(newDeadline)=>setDeadline(newDeadline)} /> */}
               <TouchableOpacity onPress={pickimage}>
                 <Text>Pick Image</Text>
               </TouchableOpacity>
