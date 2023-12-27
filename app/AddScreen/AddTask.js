@@ -23,10 +23,6 @@ const add = () => {
   const [uploading,setUploading] = useState(false);
   const [userData, setUserData] = useState({});
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'}
-  ]);
   const [dataKategori,setDataKategori] = useState([]);
   useEffect(() => {
     getUserData();

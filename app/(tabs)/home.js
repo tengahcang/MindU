@@ -6,12 +6,11 @@ import datas from '../../todolist'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firebase from '../../config';
 
-
 const Home = () => {
   const [isHaveData, setisHaveData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({});
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [dataKategori,setDataKategori] = useState([]);
   useEffect(() => {
     getUserData();
@@ -41,12 +40,22 @@ const Home = () => {
             ...item[1],
           };
         });
-        setData(snapshotArr);
+    
+        if (Array.isArray(snapshotArr) && snapshotArr.length > 0) {
+          setData(snapshotArr);
+          setisHaveData(false); // Atur menjadi false jika ada data
+        } else {
+          setisHaveData(true); // Atur menjadi true jika tidak ada data
+        }
+      } else {
+        setisHaveData(true); // Atur menjadi true jika tidak ada data
       }
       setIsLoading(false);
-      }).catch((e) => {
-        console.error(e);
-      });
+    }).catch((e) => {
+      console.error(e);
+      setisHaveData(true); // Atur menjadi true jika terjadi kesalahan
+    });
+    
   };
   const ambilkategori = (userData) => {
     const uid = userData.credential.user.uid;
@@ -65,38 +74,43 @@ const Home = () => {
     })
   };
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew name={ userData.name } />
-      <Box background={'white'} w={173} h={27} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
-            <Text fontSize={12} fontWeight={'semibold'}>Selasa, 24 Desember 2023</Text>
-      </Box>
-      <SafeAreaView >
-        
-        {isHaveData ? (
-          <Center flex={1}>
-            <Text fontWeight={"bold"} fontSize={16}>TIDAK ADA TUGAS HARI INI</Text>
-          </Center>
-        ) : (
-          isLoading ? (
-            <Center>
-              <Spinner size={"lg"} color={"black"} />
+    <SafeAreaView style={{flex: 1, backgroundColor: '#D5DEEF'}}>
+    <NavbarTopNew name={userData.name} />
+    <Box background={'white'} w={173} h={27} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
+      <Text fontSize={12} fontWeight={'semibold'}>Selasa, 24 Desember 2023</Text>
+    </Box>
+    <SafeAreaView>
+      {isLoading ? (
+        <Center flex={1}>
+          <Spinner size={'lg'} color={'black'} />
+        </Center>
+      ) : (
+        <ScrollView padding={5}>
+          <Separator height={20} />
+          {data.length === 0 ? (
+            <Center flex={1}>
+              <Text fontWeight={'bold'} fontSize={16}>TIDAK ADA TUGAS HARI INI</Text>
             </Center>
-          ):(
-            <ScrollView padding={5}>
-              <Separator height={20}/>
-              {data.map((obj, index) => (
-                <React.Fragment key={index}>
-                  <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
-                  <Separator height={5} />
-                </React.Fragment>
-              ))}
-            </ScrollView>
-          )
-          
-        )}
-      </SafeAreaView>
-    
+          ) : (
+            data.map((obj, index) => (
+              <React.Fragment key={index}>
+                <Task
+                  id={obj.id}
+                  title={obj.NamaTugas}
+                  Deadline={obj.DeadlineTugas}
+                  Catatan={obj.TugasCatatan}
+                  Foto={obj.LampiranFoto}
+                  Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color}
+                  Kategori={obj.KategoriTugas}
+                />
+                <Separator height={5} />
+              </React.Fragment>
+            ))
+          )}
+        </ScrollView>
+      )}
     </SafeAreaView>
+  </SafeAreaView>
   );
 };
 
