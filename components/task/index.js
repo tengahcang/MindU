@@ -1,13 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { DeleteIcon, EditIcon, CheckList, NoCheckList } from '../../assets/svgs';
 import { Link, router } from 'expo-router';
 import firebase from '../../config';
-import { Alert } from "react-native";
-import { firebase } from '../../config';
-import { getDatabase, ref, remove } from 'firebase/database';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -88,7 +83,6 @@ const Task = ({ id, title, Deadline, Catatan, Foto, Warna, Kategori }) => {
       <View style={{width: '80%', flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'}}>
         <Link href={{pathname:"/detail-task/detail-task", params:{"title":title,"deadline":Deadline,"catatan":Catatan,"foto":Foto,"kategori":Kategori}}} >
           <Text style={{ color: 'black', fontSize: 16 }} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
-          <Text>{id}</Text>
         </Link>
         <View style={{flexDirection:'row'}}>
           <TouchableOpacity>
