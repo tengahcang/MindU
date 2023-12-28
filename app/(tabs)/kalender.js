@@ -95,7 +95,14 @@ const kalender = () => {
           //     <Text> {selectedItems.content} </Text>
           // </Box>
           <FlatList data={selectedItems} keyExtractor={(item) => item.id.toString()} renderItem={({item}) => <React.Fragment>
-            <Task title={item.NamaTugas} Deadline={item.DeadlineTugas} Catatan={item.TugasCatatan} Foto={item.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === item.KategoriTugas)?.Color } Kategori={item.KategoriTugas} /> 
+            <Task id={item.id}
+                  title={item.NamaTugas}
+                  Deadline={item.DeadlineTugas}
+                  Catatan={item.TugasCatatan}
+                  Foto={item.LampiranFoto}
+                  Warna={dataKategori.find((index) => index.Kategori === item.KategoriTugas)?.Color}
+                  Kategori={item.KategoriTugas}
+                  status={item.Status} /> 
             <Separator height={5} />
           </React.Fragment> }/>
                 

@@ -102,6 +102,7 @@ const Home = () => {
                   Foto={obj.LampiranFoto}
                   Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color}
                   Kategori={obj.KategoriTugas}
+                  status={obj.Status}
                 />
                 <Separator height={5} />
               </React.Fragment>

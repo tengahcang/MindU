@@ -99,7 +99,16 @@ const Categori = () => {
       <ScrollView p={5}>
         {dataTugas.filter((obj) => !selectedCategory || obj.KategoriTugas === selectedCategory).map((obj, task) => (
           <React.Fragment key={obj.id}>
-            <Task title={obj.NamaTugas} Deadline={obj.DeadlineTugas} Catatan={obj.TugasCatatan} Foto={obj.LampiranFoto} Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color } Kategori={obj.KategoriTugas} />
+            <Task
+                  id={obj.id}
+                  title={obj.NamaTugas}
+                  Deadline={obj.DeadlineTugas}
+                  Catatan={obj.TugasCatatan}
+                  Foto={obj.LampiranFoto}
+                  Warna={dataKategori.find((index) => index.Kategori === obj.KategoriTugas)?.Color}
+                  Kategori={obj.KategoriTugas}
+                  status={obj.Status}
+                />
             <Separator height={5} />
               {task.catatan && <Task title={`Catatan: ${task.catatan}`}  />}
             <Separator height={5} />

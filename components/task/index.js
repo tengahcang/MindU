@@ -6,8 +6,8 @@ import firebase from '../../config';
 import { Alert } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Task = ({ id, title, Deadline, Catatan, Foto, Warna, Kategori }) => {
-  const [showChecklistItem, setshowChecklistItem] = useState(false);
+const Task = ({ id, title, Deadline, Catatan, Foto, Warna, Kategori, status }) => {
+  const [showChecklistItem, setshowChecklistItem] = useState(status);
   const [userData, setUserData] = useState(null);
 
   const getUserData = async () => {
@@ -61,6 +61,30 @@ const Task = ({ id, title, Deadline, Catatan, Foto, Warna, Kategori }) => {
     'Task3': { category: 'Kategori3',  color: 'green' },
     // tambahkan task dan relasi kategori sesuai kebutuhan
   };
+  const updateStatusToFirebase = async (newStatus) => {
+    try {
+      if (!userData) {
+        Alert.alert("Error", "Login Terlebih Dahulu");
+        return;
+      }
+  
+      const uid = userData.credential.user.uid;
+      const dataRef = firebase.database().ref(`Task/${uid}/${id}`);
+      const snapshot = await dataRef.once("value");
+      const existingNote = snapshot.val();
+  
+      if (!existingNote) {
+        console.log("Note not found");
+        return;
+      }
+  
+      // Update status pada database
+      await dataRef.update({ status: newStatus });
+      console.log("Status updated successfully");
+    } catch (error) {
+      throw error;
+    }
+  };
 
 
 
@@ -75,18 +99,20 @@ const Task = ({ id, title, Deadline, Catatan, Foto, Warna, Kategori }) => {
     <View style={{borderRadius: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: Warna, padding: 15,}}>
       <View>
         <TouchableOpacity onPress={() => { 
-          setshowChecklistItem(!showChecklistItem); 
+          const newStatus = !showChecklistItem;
+          setshowChecklistItem(newStatus);
+          updateStatusToFirebase(newStatus); 
         }}> 
           {showChecklistItem ?<CheckList width={36} height={36}/> :<NoCheckList width={36} height={36}/> }
         </TouchableOpacity>
       </View>
       <View style={{width: '80%', flexDirection: 'row', alignItems: 'center', justifyContent:'space-between'}}>
         <Link href={{pathname:"/detail-task/detail-task", params:{"title":title,"deadline":Deadline,"catatan":Catatan,"foto":Foto,"kategori":Kategori}}} >
-          <Text style={{ color: 'black', fontSize: 16 }} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
+          <Text style={{ color: showChecklistItem ? 'gray' : 'black', fontSize: 16, textDecorationLine: showChecklistItem ? 'line-through' : 'none' }} ellipsizeMode="tail" numberOfLines={2}>{trimmedTitle}</Text>
         </Link>
         <View style={{flexDirection:'row'}}>
           <TouchableOpacity>
-            <Link href="EditScreen/edit">
+            <Link href={{pathname:"EditScreen/edit", params: {"title":title,"deadline":Deadline,"catatan":Catatan,"foto":Foto,"kategori":Kategori, "ID":id } }}>
               <EditIcon width={35} height={35}/>
               </Link>
           </TouchableOpacity>
