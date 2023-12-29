@@ -51,7 +51,9 @@ const add = () => {
       TugasCatatan:  Catatan,
       KategoriTugas: Kategori,
       DeadlineTugas:  Deadline,
-      LampiranFoto: null
+      LampiranFoto: null,
+      Status: false
+
     };
     const uid = userData.credential.user.uid;
     firebase.database().ref("Task/" + uid).push(data);
@@ -105,7 +107,8 @@ const add = () => {
       TugasCatatan:  Catatan,
       KategoriTugas: Kategori,
       DeadlineTugas:  Deadline,
-      LampiranFoto:  filename
+      LampiranFoto:  filename,
+      Status: false
     };
     // console.log(data);
     const uid = userData.credential.user.uid;
