@@ -1,4 +1,4 @@
-import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack } from "native-base";
+import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack,Spinner } from "native-base";
 import { useState } from "react";
 import firebase from "../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -11,15 +11,34 @@ const regis = () => {
     const [password, setPassword] = useState("");
     const [name,SetName] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+    const [loading, setLoading] = useState(false);
     // const [image,setImage] = useState(null);
+    const validateEmail = (email) => {
+      // Regular expression for a valid email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
     const registerHandler = async () => {
+      
       if (!name || !email || !password) {
         // Check if any of the required fields is empty
         Alert.alert("Perhatian", "Silahkan isi semua kolom");
         setShowAlert(true);
         return;
       }
-  
+      if (password.length < 6) {
+        // Check if the password is less than 6 characters
+        Alert.alert("Perhatian", "Password harus memiliki minimal 6 karakter");
+        setShowAlert(true);
+        return;
+      }
+      if (!validateEmail(email)) {
+        // Check if the email format is valid
+        Alert.alert("Perhatian", "Masukkan email dengan format yang benar");
+        setShowAlert(true);
+        return;
+      }
+      setLoading(true);
       firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
         saveUserData(email, password, name, userCredential);
       }).catch((error) => {
@@ -73,9 +92,13 @@ const regis = () => {
                       <FormControl isRequired>
                           <Input type="password" w={"full"} placeholder="Masukkan Password" borderRadius={"full"} onChangeText={(value) => setPassword(value)} />
                       </FormControl>
-                      <Button colorScheme={"indigo"} borderRadius={"full"} onPress={registerHandler}>
+                      {loading ? (
+                        <Spinner accessibilityLabel="Loading" color="blue.500" />
+                      ) : (
+                        <Button colorScheme={"indigo"} borderRadius={"full"} onPress={registerHandler}>
                           Register
-                      </Button>
+                        </Button>
+                      )}
                       <HStack justifyContent={"center"}>
                           <Text>Sudah memiliki akun?</Text>
                           <Link _text={{ color: "indigo.50", fontWeight: "bold" }} href={'newloginscreen'} style={{color:'blue' ,textDecorationLine:'underline'}}>

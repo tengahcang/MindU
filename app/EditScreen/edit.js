@@ -11,7 +11,7 @@ import firebase from '../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useLocalSearchParams } from 'expo-router';
-
+import { UploadIcon } from '../../assets/svgs';
 const edit = () => {
   const params = useLocalSearchParams();
   const moment = require('moment');
@@ -278,8 +278,9 @@ const edit = () => {
                 <Text onChangeDate={(newDeadline)=>setDeadline(newDeadline)}>{Deadline}</Text>
               </Box>
               {/* <Input size="lg"  placeholder="Isi Deadline Tugas" value={Deadline} onChangeDate={(newDeadline)=>setDeadline(newDeadline)} /> */}
+              <Text>Need Dokumentasi?</Text>
               <TouchableOpacity onPress={pickimage}>
-                <Text>Pick Image</Text>
+                <UploadIcon/>
               </TouchableOpacity>
               <View>
                 { image && <Image source={{uri:image}} style={{width:300,height:300}} /> }

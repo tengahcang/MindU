@@ -53,7 +53,7 @@ const Setting = () => {
           <ProfilUser name={userData.name} email={userData.email} />
         </View>
         <View w={300} ml={5}>
-          <PrimaryButton title={'About Us'} color={'#8AAEED'} fs={20}/>
+          <PrimaryButton title={'About Us'} color={'#8AAEED'} fs={20} onPress={()=> router.push('AboutUS')}/>
         </View>
         <Separator height={25}/>
         <View w={300} ml={5}>

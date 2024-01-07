@@ -13,7 +13,7 @@ const StartPage =()=>{
       if ( value !== null ) {
         const valueObject = JSON.parse(value);
         setUserData(valueObject);
-        return <Redirect href="/home"/>
+        return <Redirect href="/detail-task/detail-task"/>
       } else {
         
       }
@@ -25,7 +25,7 @@ const StartPage =()=>{
     
     return <Redirect href="/Onboarding/Onboarding" />;
   } else {
-    return <Redirect href="/home" />;
+    return <Redirect href="/detail-task/detail-task" />;
   }
 };
 

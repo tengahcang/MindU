@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, Image } from 'native-base';
+import { ScrollView, Text, Image ,Box} from 'native-base';
 import Lightbox from 'react-native-lightbox';
 import { Separator } from '../../components';
 import { Stack } from 'expo-router'
@@ -7,7 +7,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import firebase from '../../config';
-
+import { CalendarIcon } from '../../assets/svgs';
 const detailtask = () => {
   const [UrlPic, setUrlPic] = useState();
   const params = useLocalSearchParams();
@@ -49,11 +49,14 @@ const detailtask = () => {
     <>
       <Stack.Screen options={{headerTitle:"Detail Tugas"}}/>
       <ScrollView style={{ backgroundColor:'#D5DEEF',}}>
-        <Text ml={3} fontSize={25} color={"#2196F3"} fontWeight={'bold'}> { params.title } </Text>
-        <Text ml={4} fontSize={14}> {params.deadline} </Text>
+        <Separator height={20}/>
+        <Text ml={3} fontSize={30} color={"#2196F3"} fontWeight={'bold'}> { params.title } </Text>
+        <Text ml={5} fontSize={14}> { params.kategori } </Text>
         <Separator height={30}/>
-        <Text ml={4} fontSize={16} fontWeight={'semibold'} >Kategori</Text>
-        <Text ml={4} fontSize={15}> { params.kategori } </Text>
+        <Box flexDirection={'row'} ml={5}>
+        <CalendarIcon width={20} height={20}/>
+        <Text ml={4} fontSize={15}> {params.deadline} </Text>
+        </Box>
         <Separator height={30}/>
         <Text ml={4} fontSize={16} fontWeight={'semibold'} >Catatan</Text>
         <Text ml={4} fontSize={15}> {params.catatan} </Text>
