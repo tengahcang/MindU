@@ -110,11 +110,26 @@ const getUserData = async() => {
   };
 
   const cekCuaca = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
+    try {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      const apiKey = 'T3XCNFBK4M3LTRZN64KKD65ZB';
+      const latitude = location.coords.latitude;
+      const longitude = location.coords.longitude;
+      fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude},${longitude}?unitGroup=metric&key=${apiKey}&contentType=json`)
+      .then(response => response.json())
+      .then(data => setCuaca(data.currentConditions))
+      .catch(error => console.error(error));
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
     }
+
     let location = await Location.getCurrentPositionAsync({});
     setLocation(location);
     const apiKey = 'T3XCNFBK4M3LTRZN64KKD65ZB';
