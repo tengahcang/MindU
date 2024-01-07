@@ -147,10 +147,10 @@ const Add = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
       <NavbarTopNew/>
       <View flexDirection={'row'} position={'absolute'} bottom={5}>
-        <View w={200} p={2}>
+        <View w={180} p={2}>
           <PrimaryButton title="Tambah Task" color="#2196F3" onPress={() => router.push("AddScreen/AddTask")} />
         </View>
-        <View w={200} p={2}>
+        <View w={180} p={2}>
           <PrimaryButton title="Tambah Kategori" color="#2196F3" onPress={() => router.push("AddScreen/AddKategori")} />
         </View>
       </View>

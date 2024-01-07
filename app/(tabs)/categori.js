@@ -84,7 +84,7 @@ const Categori = () => {
       <SafeAreaView>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {dataKategori.map(index => (
-            <View key={index.id} w={107} m={2}>
+            <View key={index.id} w={107} m={2} ml={5}>
               <PrimaryButton 
                 title={index.Kategori}
                 color={index.Color}

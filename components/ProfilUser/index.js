@@ -56,7 +56,7 @@ function ProfilUser({ id, userData, foto }) {
         borderWidth: 2,
         borderColor: '#E0E0E0',
       }}>
-        <View style={{ zIndex: 1, position: 'absolute', right: -10, top: -10 }}>
+        <View style={{ zIndex: 1, position: 'absolute', right: 2, top: 2 }}>
           <TouchableOpacity>
             <Link href={{ pathname: "EditProfile/EditProfile", params: { "name": nameData.name, "foto": foto, "ID": id } }}>
               <EditIcon width={30} height={30} />

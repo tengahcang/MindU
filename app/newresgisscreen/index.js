@@ -1,10 +1,10 @@
-import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack, Alert } from "native-base";
+import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack } from "native-base";
 import { useState } from "react";
 import firebase from "../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Stack,Link,router } from 'expo-router';
 import { ForLogin1 } from '../../assets/svgs';
-import { KeyboardAvoidingView, Platform } from 'react-native';
+import { KeyboardAvoidingView, Platform ,Alert} from 'react-native';
 
 const regis = () => {
     const [email, setEmail] = useState("");
