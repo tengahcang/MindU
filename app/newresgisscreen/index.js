@@ -10,22 +10,41 @@ const regis = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name,SetName] = useState("")
-    const registerHandler = async () => { firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
-        saveUserData(email, password,name, userCredential);
+    // const [image,setImage] = useState(null);
+    const registerHandler = async () => {
+      firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
+        saveUserData(email, password, name, userCredential);
       }).catch((error) => {
         console.error(error);
       });
     };
-    const saveUserData = async (email, password, name,credential) => {
-      const userData = { email, password,name, credential };
+    
+    const saveUserData = async (email, password, name, credential) => {
+      const userData = { email, password, name, credential };
+      // console.log(userData); // Log userData
       try {
         await AsyncStorage.setItem("user-data", JSON.stringify(userData));
+        // Extract email and name from userData and pass them to saveNamaDatabase
+        saveNamaDatabase(userData.email, userData.name, userData);
         router.replace("/home");
       } catch (error) {
         console.error(error);
       }
     };
+    
+    const saveNamaDatabase = (email, name,userData) => {
+      const data = {
+        email,
+        name
+      };
+      const uid = userData.credential.user.uid;
+     // Include other userData properties
+      firebase.database().ref("User/" + uid).push(data);
+      router.replace("/home");
+    };
+    
     return (
+      
     <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{ flex: 1 }}

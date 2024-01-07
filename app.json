@@ -4,7 +4,7 @@
     "slug": "MindU",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/iconnew.png",
     "userInterfaceStyle": "light",
     "scheme": "my-scheme",
     "splash": {
@@ -20,16 +20,24 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/iconnew.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.wahy.MindU"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
-    
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "3601a0ec-bb26-44b8-90e8-09178a07239d"
+      }
+    }
   }
 }

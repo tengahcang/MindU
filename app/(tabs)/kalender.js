@@ -82,7 +82,7 @@ const kalender = () => {
   };
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew name={ userData.email }/> 
+      <NavbarTopNew /> 
       <ScrollView>
         <View>
           <Calendar onDayPress={handleDayPress} markedDates={markedDates} />

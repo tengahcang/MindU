@@ -19,6 +19,7 @@ const Categori = () => {
   const [userData,setUserData] = useState({});
   const [dataKategori,setDataKategori] = useState([]);
   const [dataTugas,setDataTugas] = useState([]);
+  
   const [selectedCategory, setSelectedCategory] = useState(null);
   useEffect(() => {
     getUserData();
@@ -76,7 +77,7 @@ const Categori = () => {
   // );
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
-      <NavbarTopNew name={ userData.name } />
+      <NavbarTopNew />
       <Heading mt={10} ml={5}>
         Kategori
       </Heading>

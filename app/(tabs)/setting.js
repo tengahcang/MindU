@@ -44,7 +44,7 @@ const Setting = () => {
   };
   return (
     <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew name={userData.name}/> 
+      <NavbarTopNew/> 
       <View ml={5}>
         <Separator height={5}/>
         <Heading>Profil & Settings</Heading>
