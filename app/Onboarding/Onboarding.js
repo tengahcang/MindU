@@ -1,9 +1,13 @@
 import React from "react";
 import {View, Text, StyleSheet, FlatList} from "react-native";
-import OnboardingItem from '../components/OnboardingItem';
-import slides from '../slides';
+import OnboardingItem from './OnboardingItem';
+import slides from './Slide';
+import { Button } from "native-base";
+import { Stack, router } from "expo-router";
 export default Onboarding = () => {
   return (
+    <>
+    <Stack.Screen options={{headerShown:false}}/>
     <View style={styles.container}>
       <FlatList
         data={slides}
@@ -13,7 +17,9 @@ export default Onboarding = () => {
         pagingEnabled
         bounces={false}
       />
+      <Button position={'absolute'} zIndex={1} bottom={10} w={150} onPress={()=>router.replace('/newloginscreen')}>Skip</Button>
     </View>
+    </>
   );
 };
 

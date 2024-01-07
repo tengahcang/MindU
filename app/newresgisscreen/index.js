@@ -1,4 +1,4 @@
-import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack, Image } from "native-base";
+import { Box, Button, Center, FormControl, HStack, Heading, Input, Text, VStack, Alert } from "native-base";
 import { useState } from "react";
 import firebase from "../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -9,9 +9,17 @@ import { KeyboardAvoidingView, Platform } from 'react-native';
 const regis = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name,SetName] = useState("")
+    const [name,SetName] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
     // const [image,setImage] = useState(null);
     const registerHandler = async () => {
+      if (!name || !email || !password) {
+        // Check if any of the required fields is empty
+        Alert.alert("Perhatian", "Silahkan isi semua kolom");
+        setShowAlert(true);
+        return;
+      }
+  
       firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
         saveUserData(email, password, name, userCredential);
       }).catch((error) => {
@@ -56,13 +64,13 @@ const regis = () => {
                   <ForLogin1/>
                   <Heading mb={"6"}>Register</Heading>
                   <VStack space={"5"}>
-                      <FormControl>
+                      <FormControl isRequired>
                           <Input type="text" w={"full"} placeholder="Masukkan Nama" borderRadius={"full"} onChangeText={(value) => SetName(value)} />
                       </FormControl>
-                      <FormControl>
+                      <FormControl isRequired>
                           <Input type="text" w={"full"} placeholder="Masukkan Email" borderRadius={"full"} onChangeText={(value) => setEmail(value)} />
                       </FormControl>
-                      <FormControl>
+                      <FormControl isRequired>
                           <Input type="password" w={"full"} placeholder="Masukkan Password" borderRadius={"full"} onChangeText={(value) => setPassword(value)} />
                       </FormControl>
                       <Button colorScheme={"indigo"} borderRadius={"full"} onPress={registerHandler}>
