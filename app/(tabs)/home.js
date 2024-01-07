@@ -129,6 +129,17 @@ const getUserData = async() => {
     } catch (error) {
       console.error(error);
     }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location);
+    const apiKey = 'T3XCNFBK4M3LTRZN64KKD65ZB';
+    const latitude = location.coords.latitude;
+    const longitude = location.coords.longitude;
+    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude},${longitude}?unitGroup=metric&key=${apiKey}&contentType=json`)
+    .then(response => response.json())
+    .then(data => setCuaca(data.currentConditions))
+    .catch(error => console.error(error));
+    setIsLoading(false);
   };
 
 
@@ -136,7 +147,7 @@ const getUserData = async() => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
       <NavbarTopNew/>
       <Box flexDirection={'row'} justifyContent={'space-between'} p={1}>
-        <Box background={'white'} w={173} h={27} flexDirection={'row'} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
+        <Box background={'white'} w={173} h={28} flexDirection={'row'} borderRadius={12} marginTop={3} alignItems={'center'} justifyContent={'center'}>
           <Text fontSize={12} fontWeight={'semibold'}>{tanggal}</Text>
         </Box>
         <Box background={'white'} w={173} h={27} flexDirection={'row'} borderRadius={12} marginTop={3} marginLeft={2} alignItems={'center'} justifyContent={'center'}>
