@@ -38,6 +38,13 @@ const AddKategori = () => {
     firebase.database().ref("Kategori/"+uid).push(data);
     router.replace("/home")
   };
+  const handleAddKategori = () => {
+    if (NamaKategori.trim() === '') {
+      Alert.alert('Error', 'Nama Kategori tidak boleh kosong');
+    } else {
+      addKategori(NamaKategori, currentColor);
+    }
+  };
   return (
     <View flex={1} padding={4} backgroundColor={'#D5DEEF'}>
       <Stack.Screen options={{headerTitle:"Add Kategori"}}/>
@@ -55,7 +62,7 @@ const AddKategori = () => {
         <Input size="lg" placeholder="hex color" value={currentColor} onChangeText={(currentColor) => setCurrentColor(currentColor)} />
         
         <Separator height={20}/>
-        <PrimaryButton title="Tambah Kategori" color="#2196F3" onPress={()=>addKategori(NamaKategori,currentColor)}/>
+        <PrimaryButton title="Tambah Kategori" color="#2196F3" onPress={()=>handleAddKategori(NamaKategori,currentColor)}/>
       </FormControl>
     </View>
   );

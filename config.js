@@ -8,6 +8,7 @@ import firebase from "firebase/compat/app"
 const firebaseConfig = {
     apiKey: "AIzaSyBsyBWsfRaDmR8CgSBjsep5FSs7UtORyAA",
     authDomain: "mindu-b28e3.firebaseapp.com",
+    databaseURL: "https://mindu-b28e3-default-rtdb.firebaseio.com",
     projectId: "mindu-b28e3",
     storageBucket: "mindu-b28e3.appspot.com",
     messagingSenderId: "749411407784",

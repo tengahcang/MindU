@@ -142,7 +142,7 @@ const getUserData = async() => {
     setIsLoading(false);
   };
 
-
+  console.log(location)
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
       <NavbarTopNew/>

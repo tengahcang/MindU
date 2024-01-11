@@ -3,7 +3,7 @@ import { HomeIcon,Categories,AddIcon,CalendarIcon,Settings } from "../../assets/
 import { View } from "react-native";
 export default () => {
     return(
-        <Tabs>
+        <Tabs >
             <Tabs.Screen name="home" options={{title:"",headerShown: false,tabBarIcon:({focused})=>{
                 return(
                     <View style={{alignItems:"center",justifyContent:"center",paddingTop:20 }}>

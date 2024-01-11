@@ -66,7 +66,7 @@ const kalender = () => {
   };
   const markedDates = {};
   data.map((item) => {
-    const deadlineDate = moment(item.DeadlineTugas, 'MM/DD/YYYY, h:mm:ss A').format('YYYY-MM-DD');
+    const deadlineDate = moment(item.DeadlineTugas, 'DD/MM/YYYY, h:mm:ss A').format('YYYY-MM-DD');
     // console.log(deadlineDate);
     markedDates[deadlineDate] = { selected: true, disableTouchEvent: false, selectedDotColor: 'orange' };
   });
@@ -74,7 +74,7 @@ const kalender = () => {
     const selectedDateString = day.dateString;
     setSelectedDate(selectedDateString);
     const selectedItems = data.filter((item) => {
-      const deadlineDate = moment(item.DeadlineTugas, 'MM/DD/YYYY, h:mm:ss A').format('YYYY-MM-DD');
+      const deadlineDate = moment(item.DeadlineTugas, 'DD/MM/YYYY, h:mm:ss A').format('YYYY-MM-DD');
       return deadlineDate === selectedDateString;
     });
 

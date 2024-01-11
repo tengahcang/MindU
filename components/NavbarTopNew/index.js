@@ -52,6 +52,7 @@ const NavbarTopNew = (  ) => {
   return (
 
         <Box flexDirection={"row"} background={"#A9BFE1"} h={68} alignItems={'center'} justifyContent={'space-between'}>
+         <Link href={'setting'}>
             <HStack alignItems={'center'} mx={2}>
                 <Image w={39} h={38} borderRadius={100} source={{
                     uri: "https://www.androidponsel.com/wp-content/uploads/2023/04/profil-kosong.jpg"
@@ -59,6 +60,8 @@ const NavbarTopNew = (  ) => {
                 <Text fontSize={15} fontWeight={'semibold'} mx={2}>Hi,{name.name} </Text>
                 <Text></Text>
             </HStack>
+      
+          </Link>
             
             <TouchableOpacity style={{marginRight:5}} >
               <Link href={"notifikasi/notifikasi"}>

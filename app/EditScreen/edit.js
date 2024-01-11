@@ -15,7 +15,7 @@ import { UploadIcon } from '../../assets/svgs';
 const edit = () => {
   const params = useLocalSearchParams();
   const moment = require('moment');
-  const formattedDateString = moment(params.deadline, 'MM/DD/YYYY, h:mm:ss A').toISOString();
+  const formattedDateString = moment(params.deadline, 'DD/MM/YYYY, h:mm:ss A').toISOString();
   const [date, setDate] = useState(new Date(formattedDateString));
   const [open, setOpen] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -63,17 +63,40 @@ const edit = () => {
       });
   };
   const update = async () => {
-    if (image !== null) {
-        if (image && image.startsWith('file://')) {
-          updateDataWithImageToFirebase();
-        }else {
-          updateDataWithImageNoChanggeToFirebase(Tugas,Catatan,params.foto,value,Deadline,params.ID);
-        }
-      }else{
-        updateDataToFirebase(Tugas,Catatan,value,Deadline,params.ID);
-        // console.log(Tugas,Catatan,value,Deadline)
-      }
+    Alert.alert(
+      'Konfirmasi Edit',
+      'Apakah Anda yakin ingin menyimpan perubahan?',
+      [
+        {
+          text: 'Batal',
+          style: 'cancel',
+        },
+        {
+          text: 'Ya',
+          onPress: () => {
+            if (image !== null) {
+              if (image && image.startsWith('file://')) {
+                updateDataWithImageToFirebase();
+              } else {
+                updateDataWithImageNoChanggeToFirebase(
+                  Tugas,
+                  Catatan,
+                  params.foto,
+                  value,
+                  Deadline,
+                  params.ID
+                );
+              }
+            } else {
+              updateDataToFirebase(Tugas, Catatan, value, Deadline, params.ID);
+            }
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
+
   const pickimage = async ()=>{
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes:ImagePicker.MediaTypeOptions.All,

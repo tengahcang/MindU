@@ -10,6 +10,8 @@ import * as FileSystem from 'expo-file-system';
 import firebase from '../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { UploadIcon } from '../../assets/svgs';
+
 const add = () => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -28,12 +30,18 @@ const add = () => {
     getUserData();
   }, []);
   const simpan = async () => {
-    if (image !== null) {
+    if (Tugas.trim() === "") {
+      // Task name is empty, show an alert or take appropriate action
+      Alert.alert("Error", "Nama Tugas cannot be empty");
+    } else {
+      if (image !== null) {
         uploadDataWithImageToFirebase();
-      }else{
-        uploadDataToFirebase(Tugas,Catatan,value,Deadline);
+      } else {
+        uploadDataToFirebase(Tugas, Catatan, value, Deadline);
       }
+    }
   };
+  
   const pickimage = async ()=>{
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes:ImagePicker.MediaTypeOptions.All,
@@ -119,7 +127,7 @@ const add = () => {
     setShowDatePicker(false);
     if (selectedDate) {
       setDate(selectedDate);
-      setDeadline(selectedDate,toLocaleString());
+      setDeadline(selectedDate.toLocaleString());
     }
   };
   const onChangeTime = (event, selectedDate) => {
@@ -174,8 +182,9 @@ const add = () => {
                 <Text onChangeDate={(newDeadline)=>setDeadline(newDeadline)}>{Deadline}</Text>
               </Box>
               {/* <Input size="lg"  placeholder="Isi Deadline Tugas" value={Deadline} onChangeDate={(newDeadline)=>setDeadline(newDeadline)} /> */}
+              <Text>Need Dokumentasi?</Text>
               <TouchableOpacity onPress={pickimage}>
-                <Text>Pick Image</Text>
+                <UploadIcon/>
               </TouchableOpacity>
               <View>
                 { image && <Image source={{uri:image}} style={{width:300,height:300}} /> }

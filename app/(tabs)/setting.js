@@ -8,6 +8,7 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 const Setting = () => {
   const [userData, setUserData] = useState({});
+  const buttonWidth = 300;
   useEffect(() => {
     getUserData();
   }, []);
@@ -43,37 +44,39 @@ const Setting = () => {
     }
   };
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:'#D5DEEF',}}>
-      <NavbarTopNew/> 
-      <View ml={5}>
-        <Separator height={20}/>
-        <Heading ml={5}>Profil</Heading>
-        <Separator height={5}/>
-        <View p={5}>
-          <ProfilUser name={userData.name} email={userData.email} />
-        </View>
-        <View w={300} ml={5}>
-          <PrimaryButton title={'About Us'} color={'#8AAEED'} fs={20} onPress={()=> router.push('AboutUS')}/>
-        </View>
-        <Separator height={25}/>
-        <View w={300} ml={5}>
-          <PrimaryButton title={'Bug Report'} color={'#8AAEED'} fs={20}/>
-        </View>
-        <Separator height={25}/>
-        <View w={300} ml={5}>
-          <PrimaryButton title={'General Questions'} color={'#8AAEED'} fs={20}/>
-        </View>
-        <Separator height={25}/>
-        <View w={300} ml={5}>
-          <PrimaryButton title={'Arsip'} color={'#8AAEED'} fs={20}/>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#D5DEEF' }}>
+    <NavbarTopNew />
+    <View style={{ marginLeft: 5 }}>
+      <Separator height={20} />
+      <Heading ml={5}>Profil</Heading>
+      <Separator height={5} />
+      <View padding={5}>
+        <ProfilUser name={userData.name} email={userData.email} />
+      </View>
+      <View mr={6} alignItems={'center'} justifyContent={'center'}>
+          <View width={buttonWidth} marginLeft={5}>
+            <PrimaryButton title={'About Us'} color={'#8AAEED'} fontSize={20} onPress={() => router.push('AboutUS')} />
+          </View>
+          <Separator height={25} />
+          <View width={buttonWidth} marginLeft={5}>
+            <PrimaryButton title={'Bug Report'} color={'#8AAEED'} fontSize={20} />
+          </View>
+          <Separator height={25} />
+          <View width={buttonWidth} marginLeft={5}>
+            <PrimaryButton title={'General Questions'} color={'#8AAEED'} fontSize={20} />
+          </View>
+          <Separator height={25} />
+          <View width={buttonWidth} marginLeft={5}>
+            <PrimaryButton title={'Arsip'} color={'#8AAEED'} fontSize={20} />
+          </View>
         </View>
       </View>
-      <Separator height={80}/>
-      <View style={{padding:20}}>
-          <PrimaryButton title="Keluar" color={'#B31217'} fs={20} onPress={logout}/>
-        <Center>App Version 1.0</Center>
-      </View>
-    </SafeAreaView>
+    <Separator height={80} />
+    <View style={{ padding: 20 }}>
+      <PrimaryButton title="Keluar" color={'#B31217'} fontSize={20} onPress={logout} />
+      <Center>App Version 1.0</Center>
+    </View>
+  </SafeAreaView>
   )
 }
 

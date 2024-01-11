@@ -6,15 +6,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import firebase from "../../config";
 
-const extractUniqueCategories = (taskList) => {
-  const uniqueCategories = {};
-  taskList.forEach((task) => {
-    if (task.category && task.category.nama && task.category.warna) {
-      uniqueCategories[task.category.nama] = task.category.warna;
-    }
-  });
-  return uniqueCategories;
-};
+// const extractUniqueCategories = (taskList) => {
+//   const uniqueCategories = {};
+//   taskList.forEach((task) => {
+//     if (task.category && task.category.nama && task.category.warna) {
+//       uniqueCategories[task.category.nama] = task.category.warna;
+//     }
+//   });
+//   return uniqueCategories;
+// };
 const Categori = () => {
   const [userData,setUserData] = useState({});
   const [dataKategori,setDataKategori] = useState([]);
